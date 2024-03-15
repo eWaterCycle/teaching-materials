@@ -7,10 +7,10 @@ from pathlib import Path
 from typing import Any, Type
 
 from ewatercycle.base.forcing import GenericLumpedForcing # or later Use custom forcing instead?
-from ewatercycle_HBV.forcing import HBVForcing # Use custom forcing instead
+from forcing import HBVForcing # Use custom forcing instead
 from ewatercycle.base.model import LocalModel
 
-from .hbv_bmi import HBV
+from hbv_bmi import HBV_Bmi
 
 
 HBV_PARAMS = (
@@ -32,13 +32,13 @@ HBV_STATES = (
 )
 
     
-class HBVMethods(LocalModel):
+class HBV(LocalModel):
     """
     The eWatercycle HBV model.
     
 
     """
-    bmi_class = HBV
+    bmi_class = HBV_Bmi
     forcing: HBVForcing  # The model requires forcing.
     parameter_set: None  # The model has no parameter set.
 
