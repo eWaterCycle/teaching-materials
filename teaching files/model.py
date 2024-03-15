@@ -5,6 +5,7 @@ import warnings
 from collections.abc import ItemsView
 from pathlib import Path
 from typing import Any, Type
+from bmipy import Bmi
 
 from ewatercycle.base.forcing import GenericLumpedForcing # or later Use custom forcing instead?
 from forcing import HBVForcing # Use custom forcing instead
@@ -38,15 +39,15 @@ class HBV(LocalModel):
     
 
     """
-    bmi_class = HBV_Bmi
+    bmi_class: Type[Bmi] = HBV_Bmi
     forcing: HBVForcing  # The model requires forcing.
-    parameter_set: None  # The model has no parameter set.
+    parameter_set: None = None  # The model has no parameter set.
 
     _config: dict = {
         "precipitation_file": "",
         "potential_evaporation_file": "",
         "parameters": "",
-        "initial_storage": "",
+        "initial_storage": "",gti 
                         }
 
     def _make_cfg_file(self, **kwargs) -> Path:

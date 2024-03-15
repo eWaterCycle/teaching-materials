@@ -2,12 +2,10 @@ from bmipy import Bmi
 from typing import Any, Tuple
 import numpy as np
 import warnings
-
-
-from bmipy import Bmi
-from typing import Any, Tuple
-import numpy as np
-import warnings
+import xarray as xr
+import pandas as pd
+from pathlib import Path
+import json
 
 
 DICT_VAR_UNITS = {"Imax":"mm",
@@ -42,13 +40,13 @@ class HBV_Bmi(Bmi):
 
         """
         # open json files containing data
-        self.config: dict[str, Any] = utils.read_config(config_file)
+        self.config: dict[str, Any] = read_config(config_file)
 
         # store forcing & obs
-        self.P = utils.load_var(self.config["precipitation_file"], "pr")
+        self.P = load_var(self.config["precipitation_file"], "pr")
 
         # add Tas, Tmin and Tmax support for snow component ??!
-        self.EP = utils.load_var(self.config["potential_evaporation_file"], "pev")
+        self.EP = load_var(self.config["potential_evaporation_file"], "pev")
 
         # set up times
         self.Ts = self.P['time'].astype("datetime64[s]")
@@ -444,9 +442,6 @@ def get_unixtime(Ts: np.datetime64) -> int:
     """Get unix timestamp (seconds since 1 january 1970) from a np.datetime64."""
     return  np.datetime64(Ts).astype("datetime64[s]").astype("int")
 
-import xarray as xr
-from pathlib import Path
-import json
 
 
 def read_config(config_file: str) -> dict:
