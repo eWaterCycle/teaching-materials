@@ -47,7 +47,7 @@ class HBV(LocalModel):
         "precipitation_file": "",
         "potential_evaporation_file": "",
         "parameters": "",
-        "initial_storage": "",gti
+        "initial_storage": ""
                         }
 
     def _make_cfg_file(self, **kwargs) -> Path:
