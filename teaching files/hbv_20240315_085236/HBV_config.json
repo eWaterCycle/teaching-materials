@@ -1,6 +1,0 @@
-{
-    "precipitation_file": "/home/davidhaasnoot/teaching-materials/teaching files/Forcing/HBV_forcing_2024-03-15 09_52.nc",
-    "potential_evaporation_file": "/home/davidhaasnoot/teaching-materials/teaching files/Forcing/HBV_forcing_2024-03-15 09_52.nc",
-    "parameters": "4.0,0.6,420.0,2.25,0.1505,5.5,0.055,0.00505",
-    "initial_storage": "0,100,0,5"
-}
