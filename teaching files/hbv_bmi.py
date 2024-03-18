@@ -25,7 +25,12 @@ DICT_VAR_UNITS = {"Imax":"mm",
                     "Qs_dt": "mm/d",
                     "Qf_dt": "mm/d",
                     "Q_tot_dt": "mm/d",
-                    "Q": "mm/d"}
+                    "Q": "mm/d",
+                    "Pe_dt": "-", 
+                    "Qus_dt": "mm/d",
+                    "P_dt": "mm/d",
+                    "Ep_dt": "mm/d"}
+
 class HBV_Bmi(Bmi):
     """HBV model wrapped in a BMI interface."""
 
@@ -57,7 +62,7 @@ class HBV_Bmi(Bmi):
         self.dt = (
             self.Ts.values[1] - self.Ts.values[0]
         ) / np.timedelta64(1, "s") / 24 / 3600
-
+       
         # define parameters 
         self.set_pars(np.array(self.config['parameters'].split(','), dtype=np.float64))
 
@@ -78,6 +83,12 @@ class HBV_Bmi(Bmi):
 
         # stores corresponding objects for variables
 
+
+###############################################################################    
+
+    "Only adjust the update function!"
+
+###############################################################################    
     def update(self) -> None:
             """ Updates model one timestep  """
             if self.current_timestep < self.end_timestep:
@@ -93,7 +104,7 @@ class HBV_Bmi(Bmi):
                     self.Si    = self.Si + self.P_dt               # increase the storage
                     self.Pe_dt = max((self.Si - self.I_max) / self.dt, 0)
                     self.Si    = self.Si - self.Pe_dt
-                    self.Ei_dt = 0                          # if rainfall, evaporation = 0 as too moist
+                    self.Ei_dt =                           # if rainfall, evaporation = 0 as too moist
                 else:
                     # Evaporation only when there is no rainfall
                     self.Pe_dt = 0                      # nothing flows in so must be 0
@@ -116,8 +127,8 @@ class HBV_Bmi(Bmi):
                 self.Su    = self.Su - self.Ea_dt
 
                 # Percolation
-                Qus_dt = self.P_max * (self.Su / self.Su_max) * self.dt # Flux from Su to Ss
-                self.Su  = self.Su - Qus_dt
+                self.Qus_dt = self.P_max * (self.Su / self.Su_max) * self.dt # Flux from Su to Ss
+                self.Su  = self.Su - self.Qus_dt
 
                 # Fast Reservoir
                 self.Sf = self.Sf + Quf_dt
@@ -125,7 +136,7 @@ class HBV_Bmi(Bmi):
                 self.Sf = self.Sf - self.Qf_dt
 
                 # Slow Reservoir
-                self.Ss = self.Ss + Qus_dt
+                self.Ss = self.Ss + self.Qus_dt
                 self.Qs_dt = self.Ss * self.Ks * self.dt
                 self.Ss = self.Ss - self.Qs_dt
 
@@ -138,6 +149,13 @@ class HBV_Bmi(Bmi):
                 # Advance the model time by one step
                 self.current_timestep += 1
 
+###############################################################################    
+
+    "Do not change this"
+
+############################################################################### 
+
+
     def set_pars(self, par) -> None:
         self.I_max  = par[0]                # maximum interception
         self.Ce     = par[1]                # Ea = Su / (sumax * Ce) * Ep
@@ -146,7 +164,7 @@ class HBV_Bmi(Bmi):
         self.P_max  = par[4]                # Qus = Pmax * (Su/Sumax)
         self.T_lag  = self.set_tlag(par[5]) # used in triangular transfer function
         self.Kf     = par[6]                # Qf=kf*sf
-        self.Ks     = par[7]                # Qs=Ks*
+        self.Ks     = par[7]                # Qs=Ks*ss
 
     def set_storage(self, stor) -> None:
         self.Si = stor[0] # Interception storage
@@ -170,12 +188,17 @@ class HBV_Bmi(Bmi):
                              "Sf": self.Sf,
                              "Ss": self.Ss,
                              "Ei_dt": self.Ei_dt,
-                             "Ea_dt": self.Ei_dt,
+                             "Ea_dt": self.Ea_dt,
                              "Qs_dt": self.Qs_dt,
                              "Qf_dt": self.Qf_dt,
                              "Q_tot_dt": self.Q_tot_dt,
                              "Q": self.Q,
-                             }
+                             "Pe_dt": self.Pe_dt,
+                             "Qus_dt": self.Qus_dt,
+                             "P_dt": self.P_dt,
+                             "Ep_dt": self.Ep_dt,}
+            
+                             
     def updating_obj_from_dict_var(self) -> None:
         """Function which inverts the dictionary above & sets objects correctly"""
         param_names = ["Imax","Ce", "Sumax", "Beta", "Pmax", "Tlag", "Kf", "Ks"]
