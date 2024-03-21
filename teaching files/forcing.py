@@ -11,6 +11,12 @@ import numpy as np
 
 from ewatercycle.base.forcing import DefaultForcing
 
+
+RENAME_CAMELS = {'total_precipitation_sum':'pr',
+                      'potential_evaporation_sum':'pev',
+                      'streamflow':'Q'}
+
+REQUIRED_PARAMS = ["pr", "pev"]
 class HBVForcing(DefaultForcing):
     """Container for HBV forcing data.
 
@@ -81,7 +87,7 @@ class HBVForcing(DefaultForcing):
             return True
         else:
             return False
-    # TODO Implement this to take .txt and add them?
+
     def from_test_txt(self) -> xr.Dataset:
         """Load forcing data from a txt file into an xarray dataset.
 
@@ -112,13 +118,9 @@ class HBVForcing(DefaultForcing):
                             "history": "Created by ewatercycle_HBV.forcing.HBVForcing.to_xarray()",
                                 },
                         )
-        time = str(datetime.now())[:-10].replace(":","_")
-        ds_name = f"HBV_forcing_{time}.nc"
-        out_dir = self.directory / ds_name
-        if not out_dir.exists():
-            ds.to_netcdf(out_dir)
-        self.pr = ds_name  # these are appended in model.py
-        self.pev = ds_name # these are appended in model.py
+        ds, ds_name = self.crop_ds(ds, "test")
+        self.pev = ds_name
+        self.pr = ds_name
         return ds
 
     def from_camels_txt(self) -> xr.Dataset:
@@ -185,7 +187,7 @@ class HBVForcing(DefaultForcing):
 
         # add the data lines with catchment characteristics to the description
         attrs.update(data)
-        # TODO use netcdf-cf conventions
+
         ds = xr.Dataset(data_vars=df,
                         attrs=attrs,
                         )
@@ -198,21 +200,58 @@ class HBVForcing(DefaultForcing):
                              ds.attrs['elevation(m)'],
                              ds.attrs['lat']
                              )
-        # crop ds
+        ds, ds_name= self.crop_ds(ds, "CAMELS")
+        self.pev = ds_name
+        self.pr = ds_name
+        return ds
+
+    def from_external_source(self):
+        if None in [self.directory, self.pr, self.pev]:
+            raise ValueError("Directory or camels_file is not set")
+
+        # often same file
+        if self.pr == self.pev:
+            ds = xr.open_dataset(self.directory / self.pr)
+
+            if sum([key in ds.data_vars for key in RENAME_CAMELS.keys()]) == len(RENAME_CAMELS):
+                ds = ds.rename(RENAME_CAMELS)
+                ds = ds.rename_dims({'date': 'time'})
+                ds = ds.rename({'date': 'time'})
+
+            ds, ds_name = self.crop_ds(ds, "external")
+            self.pev = ds_name
+            self.pr = ds_name
+            return ds
+
+        else:
+            # but can also seperate
+            ds_pr = xr.open_dataset(self.directory / self.pr)
+            ds_pev = xr.open_dataset(self.directory / self.pev)
+            combined_data_vars = list(ds_pr.data_vars) + list(ds_pev.data_vars)
+            if not sum([param in combined_data_vars for param in REQUIRED_PARAMS]) == len(REQUIRED_PARAMS):
+                raise UserWarning(f"Supplied NetCDF files must contain {REQUIRED_PARAMS} respectively")
+
+            ds_pr, ds_name_pr = self.crop_ds(ds_pr, "external")
+            self.pr = ds_name_pr
+
+            ds_pev, ds_name_pev = self.crop_ds(ds_pev, "external")
+            self.pev = ds_name_pev
+
+            return ds_pr, ds_pev
+
+    def crop_ds(self, ds: xr.Dataset, name: str):
         start = np.datetime64(self.start_time)
         end = np.datetime64(self.end_time)
         ds = ds.isel(time=(ds['time'].values >= start) & (ds['time'].values <= end))
 
-        time = str(datetime.now())[:-10].replace(":","_")
+        time = str(datetime.now())[:-10].replace(":", "_")
         # TODO maybe change this time aspect? can get quite large - or simply remove in finalize
-        ds_name = f"HBV_forcing_CAMELS_{time}.nc"
+        ds_name = f"HBV_forcing_{name}_{time}.nc"
         out_dir = self.directory / ds_name
         if not out_dir.exists():
             ds.to_netcdf(out_dir)
 
-        self.pev = ds_name # these are appended in model.py
-        self.pr = ds_name  # these are appended in model.py
-        return ds
+        return ds, ds_name
 
 def calc_pet(s_rad, t_min, t_max, doy, alpha, elev, lat) -> np.ndarray:
     """Calculates Potential Evaporation using Priestly–Taylor PET estimate, callibrated with longterm P-T trends from the camels data set (alpha).

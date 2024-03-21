@@ -59,7 +59,7 @@ class HBV(LocalModel):
         elif self.forcing.camels_txt_defined():
             self.forcing.from_camels_txt()
         elif self.forcing.forcing_nc_defined():
-            pass # to do: quality check here in future rather than in model.
+            self.forcing.from_external_source()
         else:
             raise UserWarning("Ensure either a txt file with camels data or an(/set of) xarrays is defined")
 
