@@ -104,7 +104,7 @@ class HBV_Bmi(Bmi):
                     self.Si    = self.Si + self.P_dt               # increase the storage
                     self.Pe_dt = max((self.Si - self.I_max) / self.dt, 0)
                     self.Si    = self.Si - self.Pe_dt
-                    self.Ei_dt =                           # if rainfall, evaporation = 0 as too moist
+                    self.Ei_dt = 0                          # if rainfall, evaporation = 0 as too moist
                 else:
                     # Evaporation only when there is no rainfall
                     self.Pe_dt = 0                      # nothing flows in so must be 0
