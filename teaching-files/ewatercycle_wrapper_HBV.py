@@ -71,7 +71,7 @@ class HBV(LocalModel):
             )
     
             self._config["potential_evaporation_file"] = str(
-                self.forcing.directory / self.forcing.pev
+                self.forcing.directory / self.forcing.evspsblpot
             )
         elif type(self.forcing).__name__ == 'GenericLumpedForcing':
                 raise UserWarning("Generic Lumped Forcing does not provide potential evaporation, which this model needs")
