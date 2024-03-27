@@ -55,8 +55,9 @@ class HBV(LocalModel):
     def _make_cfg_file(self, **kwargs) -> Path:
         """Write model configuration file."""
 
+
         # do some basic test to check on forcing
-        if type(self.forcing).__name__ is HBVForcing:
+        if type(self.forcing).__name__ == 'HBVForcing':
             if self.forcing.test_data_bool:
                 self.forcing.from_test_txt()
             elif self.forcing.camels_txt_defined():
@@ -72,9 +73,9 @@ class HBV(LocalModel):
             self._config["potential_evaporation_file"] = str(
                 self.forcing.directory / self.forcing.pev
             )
-        elif type(self.forcing).__name__ is GenericLumpedForcing:
+        elif type(self.forcing).__name__ == 'GenericLumpedForcing':
                 raise UserWarning("Generic Lumped Forcing does not provide potential evaporation, which this model needs")
-        elif type(self.forcing).__name__ is LumpedMakkinkForcing:
+        elif type(self.forcing).__name__ == 'LumpedMakkinkForcing':
             self._config["precipitation_file"] = str(
                 self.forcing["pr"]
             )
