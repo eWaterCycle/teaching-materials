@@ -74,6 +74,16 @@ class HBVForcing(DefaultForcing):
     alpha: Optional[float] = 1.26 # varies per catchment, mostly 1.26?
     test_data_bool: bool = False # allows to use self.from_test_txt()
 
+    # write_forcing_to_netcdf()
+
+    # def write_forcing_to_netcdf(self)
+    #     if self.test_data_bool:
+    #        self.from_test_txt()
+    #     elif wgliwrh
+
+    #     self.evspsblpot.tonetCDF()
+    #     write_yaml_thing()
+
     def camels_txt_defined(self):
         """test whether user defined forcing file, used converting text forcing file to netcdf"""
         if len(self.camels_file) > 4:
