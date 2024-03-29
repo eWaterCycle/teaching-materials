@@ -487,4 +487,8 @@ def load_var(ncfile: str | Path, varname: str) -> xr.DataArray:
     data = xr.open_dataset(ncfile)
     assert "time" in data.dims
     assert varname in data.data_vars
+    if "units" in data[varname].attrs:
+        if data[varname].attrs['units'] == 'kg m-2 s-1':
+            data[varname] = data[varname] * 24 * 3600 #mm/day
+            #data[varname].attrs['units'] = 'mm d-1' TODO, fix.
     return data[varname]
