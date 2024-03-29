@@ -5,12 +5,15 @@ import warnings
 from collections.abc import ItemsView
 from pathlib import Path
 from typing import Any, Type
+from bmipy import Bmi
 
-from ewatercycle.base.forcing import GenericLumpedForcing # or later Use custom forcing instead?
-from ewatercycle_HBV.forcing import HBVForcing # Use custom forcing instead
+from ewatercycle.forcing import LumpedMakkinkForcing # or later Use custom forcing instead?
+from ewatercycle.forcing import GenericLumpedForcing # or later Use custom forcing instead?
+
+from forcing import HBVForcing # Use custom forcing instead
 from ewatercycle.base.model import LocalModel
 
-from .hbv_bmi import HBV
+from hbv_bmi import HBV_Bmi
 
 
 HBV_PARAMS = (
@@ -32,43 +35,54 @@ HBV_STATES = (
 )
 
     
-class HBVMethods(LocalModel):
+class HBV(LocalModel):
     """
     The eWatercycle HBV model.
     
 
     """
-    bmi_class = HBV
-    forcing: HBVForcing  # The model requires forcing.
-    parameter_set: None  # The model has no parameter set.
+    bmi_class: Type[Bmi] = HBV_Bmi
+    forcing: LumpedMakkinkForcing|HBVForcing|GenericLumpedForcing  # The model requires forcing.
+    parameter_set: None = None  # The model has no parameter set.
 
     _config: dict = {
         "precipitation_file": "",
         "potential_evaporation_file": "",
         "parameters": "",
-        "initial_storage": "",
+        "initial_storage": ""
                         }
 
     def _make_cfg_file(self, **kwargs) -> Path:
         """Write model configuration file."""
 
+
         # do some basic test to check on forcing
-        if self.forcing.test_data_bool:
-            self.forcing.from_test_txt()
-        elif self.forcing.camels_txt_defined():
-            self.forcing.from_camels_txt()
-        elif self.forcing.forcing_nc_defined():
-            pass # to do: quality check here in future rather than in model.
-        else:
-            raise UserWarning("Ensure either a txt file with camels data or an(/set of) xarrays is defined")
+        if type(self.forcing).__name__ == 'HBVForcing':
+            if self.forcing.test_data_bool:
+                self.forcing.from_test_txt()
+            elif self.forcing.camels_txt_defined():
+                self.forcing.from_camels_txt()
+            elif self.forcing.forcing_nc_defined():
+                self.forcing.from_external_source()
+            else:
+                raise UserWarning("Ensure either a txt file with camels data or an(/set of) xarrays is defined")
+            self._config["precipitation_file"] = str(
+                self.forcing.directory / self.forcing.pr
+            )
+    
+            self._config["potential_evaporation_file"] = str(
+                self.forcing.directory / self.forcing.evspsblpot
+            )
+        elif type(self.forcing).__name__ == 'GenericLumpedForcing':
+                raise UserWarning("Generic Lumped Forcing does not provide potential evaporation, which this model needs")
+        elif type(self.forcing).__name__ == 'LumpedMakkinkForcing':
+            self._config["precipitation_file"] = str(
+                self.forcing["pr"]
+            )
+            self._config["potential_evaporation_file"] = str(
+                self.forcing["evspsblpot"]
+            )
 
-        self._config["precipitation_file"] = str(
-            self.forcing.directory / self.forcing.pr
-        )
-
-        self._config["potential_evaporation_file"] = str(
-            self.forcing.directory / self.forcing.pev
-        )
         ## possibly add later for snow?
         # self._config["temperature_file"] = str(
         #     self.forcing.directory / self.forcing.tas
@@ -166,11 +180,12 @@ class HBVMethods(LocalModel):
 
 
         # NetCDF files created are timestamped and running them a lot creates many files, remove these
-        if self.forcing.camels_txt_defined() or self.forcing.test_data_bool:
-            for file in ["potential_evaporation_file", "precipitation_file"]:
-                path = self.forcing.directory / self._config[file]
-                if path.is_file(): # often both with be the same, e.g. with camels data.
-                    path.unlink()
-                else:
-                    pass
+        if type(self.forcing).__name__ == 'HBVForcing':
+            if self.forcing.camels_txt_defined() or self.forcing.test_data_bool:
+                for file in ["potential_evaporation_file", "precipitation_file"]:
+                    path = self.forcing.directory / self._config[file]
+                    if path.is_file(): # often both with be the same, e.g. with camels data.
+                        path.unlink()
+                    else:
+                        pass
 

@@ -2,13 +2,10 @@ from bmipy import Bmi
 from typing import Any, Tuple
 import numpy as np
 import warnings
-
-
-from bmipy import Bmi
-from typing import Any, Tuple
-from HBV import utils
-import numpy as np
-import warnings
+import xarray as xr
+import pandas as pd
+from pathlib import Path
+import json
 
 
 DICT_VAR_UNITS = {"Imax":"mm",
@@ -28,8 +25,13 @@ DICT_VAR_UNITS = {"Imax":"mm",
                     "Qs_dt": "mm/d",
                     "Qf_dt": "mm/d",
                     "Q_tot_dt": "mm/d",
-                    "Q": "mm/d"}
-class HBV(Bmi):
+                    "Q": "mm/d",
+                    "Pe_dt": "-", 
+                    "Qus_dt": "mm/d",
+                    "P_dt": "mm/d",
+                    "Ep_dt": "mm/d"}
+
+class HBV_Bmi(Bmi):
     """HBV model wrapped in a BMI interface."""
 
     def initialize(self, config_file: str) -> None:
@@ -43,13 +45,13 @@ class HBV(Bmi):
 
         """
         # open json files containing data
-        self.config: dict[str, Any] = utils.read_config(config_file)
+        self.config: dict[str, Any] = read_config(config_file)
 
         # store forcing & obs
-        self.P = utils.load_var(self.config["precipitation_file"], "pr")
+        self.P = load_var(self.config["precipitation_file"], "pr")
 
         # add Tas, Tmin and Tmax support for snow component ??!
-        self.EP = utils.load_var(self.config["potential_evaporation_file"], "pev")
+        self.EP = load_var(self.config["potential_evaporation_file"], "evspsblpot")
 
         # set up times
         self.Ts = self.P['time'].astype("datetime64[s]")
@@ -60,7 +62,7 @@ class HBV(Bmi):
         self.dt = (
             self.Ts.values[1] - self.Ts.values[0]
         ) / np.timedelta64(1, "s") / 24 / 3600
-
+       
         # define parameters 
         self.set_pars(np.array(self.config['parameters'].split(','), dtype=np.float64))
 
@@ -81,6 +83,79 @@ class HBV(Bmi):
 
         # stores corresponding objects for variables
 
+
+###############################################################################    
+
+    "Only adjust the update function!"
+
+###############################################################################    
+    def update(self) -> None:
+            """ Updates model one timestep  """
+            if self.current_timestep < self.end_timestep:
+                self.P_dt  = self.P.isel(time=self.current_timestep).to_numpy() * self.dt
+                self.Ep_dt = self.EP.isel(time=self.current_timestep).to_numpy() * self.dt
+
+                # vanaf hier zelf
+
+                
+                # Interception Reservoir
+                if self.P_dt > 0:
+                    # if there is rain, no evap
+                    self.Si    = self.Si + self.P_dt               # increase the storage
+                    self.Pe_dt = max((self.Si - self.I_max) / self.dt, 0)
+                    self.Si    = self.Si - self.Pe_dt
+                    self.Ei_dt = 0                          # if rainfall, evaporation = 0 as too moist
+                else:
+                    # Evaporation only when there is no rainfall
+                    self.Pe_dt = 0                      # nothing flows in so must be 0
+                    self.Ei_dt = min(self.Ep_dt, self.Si / self.dt) # evaporation limited by storage
+                    self.Si    = self.Si - self.Ei_dt
+
+                # split flow into Unsaturated Reservoir and Fast flow
+                if self.Pe_dt > 0:
+                    cr       = (self.Su / self.Su_max)**self.beta
+                    Qiu_dt   = (1 - cr ) * self.Pe_dt      # flux from Ir to Ur
+                    self.Su  = self.Su + Qiu_dt
+                    Quf_dt   = cr  * self.Pe_dt            # flux from Su to Sf
+                else:
+                    Quf_dt = 0
+
+                # Transpiration
+                self.Ep_dt = max(0, self.Ep_dt - self.Ei_dt)        # Transpiration
+                self.Ea_dt = self.Ep_dt  * (self.Su / (self.Su_max * self.Ce))
+                self.Ea_dt = min(self.Su, self.Ea_dt)            # limited by water in soil
+                self.Su    = self.Su - self.Ea_dt
+
+                # Percolation
+                self.Qus_dt = self.P_max * (self.Su / self.Su_max) * self.dt # Flux from Su to Ss
+                self.Su  = self.Su - self.Qus_dt
+
+                # Fast Reservoir
+                self.Sf = self.Sf + Quf_dt
+                self.Qf_dt = self.dt * self.Kf * self.Sf
+                self.Sf = self.Sf - self.Qf_dt
+
+                # Slow Reservoir
+                self.Ss = self.Ss + self.Qus_dt
+                self.Qs_dt = self.Ss * self.Ks * self.dt
+                self.Ss = self.Ss - self.Qs_dt
+
+                # total = fast + slow
+                self.Q_tot_dt = self.Qs_dt + self.Qf_dt
+                # add time lag to the process - Qm is set here
+                self.add_time_lag()
+            
+
+                # Advance the model time by one step
+                self.current_timestep += 1
+
+###############################################################################    
+
+    "Do not change this"
+
+############################################################################### 
+
+
     def set_pars(self, par) -> None:
         self.I_max  = par[0]                # maximum interception
         self.Ce     = par[1]                # Ea = Su / (sumax * Ce) * Ep
@@ -89,74 +164,13 @@ class HBV(Bmi):
         self.P_max  = par[4]                # Qus = Pmax * (Su/Sumax)
         self.T_lag  = self.set_tlag(par[5]) # used in triangular transfer function
         self.Kf     = par[6]                # Qf=kf*sf
-        self.Ks     = par[7]                # Qs=Ks*
+        self.Ks     = par[7]                # Qs=Ks*ss
 
     def set_storage(self, stor) -> None:
         self.Si = stor[0] # Interception storage
         self.Su = stor[1] # Unsaturated Rootzone Storage
         self.Sf = stor[2] # Fastflow storage
         self.Ss = stor[3] # Groundwater storage
-
-
-    def update(self) -> None:
-        """ Updates model one timestep  """
-        if self.current_timestep < self.end_timestep:
-            self.P_dt  = self.P.isel(time=self.current_timestep).to_numpy() * self.dt
-            self.Ep_dt = self.EP.isel(time=self.current_timestep).to_numpy() * self.dt
-
-            # vanaf hier zelf
-
-            
-            # Interception Reservoir
-            if self.P_dt > 0:
-                # if there is rain, no evap
-                self.Si    = self.Si + self.P_dt               # increase the storage
-                self.Pe_dt = max((self.Si - self.I_max) / self.dt, 0)
-                self.Si    = self.Si - self.Pe_dt
-                self.Ei_dt = 0                          # if rainfall, evaporation = 0 as too moist
-            else:
-                # Evaporation only when there is no rainfall
-                self.Pe_dt = 0                      # nothing flows in so must be 0
-                self.Ei_dt = min(self.Ep_dt, self.Si / self.dt) # evaporation limited by storage
-                self.Si    = self.Si - self.Ei_dt
-
-            # split flow into Unsaturated Reservoir and Fast flow
-            if self.Pe_dt > 0:
-                cr       = (self.Su / self.Su_max)**self.beta
-                Qiu_dt   = (1 - cr ) * self.Pe_dt      # flux from Ir to Ur
-                self.Su  = self.Su + Qiu_dt
-                Quf_dt   = cr  * self.Pe_dt            # flux from Su to Sf
-            else:
-                Quf_dt = 0
-
-            # Transpiration
-            self.Ep_dt = max(0, self.Ep_dt - self.Ei_dt)        # Transpiration
-            self.Ea_dt = self.Ep_dt  * (self.Su / (self.Su_max * self.Ce))
-            self.Ea_dt = min(self.Su, self.Ea_dt)            # limited by water in soil
-            self.Su    = self.Su - self.Ea_dt
-
-            # Percolation
-            Qus_dt = self.P_max * (self.Su / self.Su_max) * self.dt # Flux from Su to Ss
-            self.Su  = self.Su - Qus_dt
-
-            # Fast Reservoir
-            self.Sf = self.Sf + Quf_dt
-            self.Qf_dt = self.dt * self.Kf * self.Sf
-            self.Sf = self.Sf - self.Qf_dt
-
-            # Slow Reservoir
-            self.Ss = self.Ss + Qus_dt
-            self.Qs_dt = self.Ss * self.Ks * self.dt
-            self.Ss = self.Ss - self.Qs_dt
-
-            # total = fast + slow
-            self.Q_tot_dt = self.Qs_dt + self.Qf_dt
-            # add time lag to the process - Qm is set here
-            self.add_time_lag()
-           
-
-            # Advance the model time by one step
-            self.current_timestep += 1
 
     def updating_dict_var_obj(self) -> None:
         """Function which makes getting the objects more readable-  but adds more boiler plate.."""
@@ -174,12 +188,17 @@ class HBV(Bmi):
                              "Sf": self.Sf,
                              "Ss": self.Ss,
                              "Ei_dt": self.Ei_dt,
-                             "Ea_dt": self.Ei_dt,
+                             "Ea_dt": self.Ea_dt,
                              "Qs_dt": self.Qs_dt,
                              "Qf_dt": self.Qf_dt,
                              "Q_tot_dt": self.Q_tot_dt,
                              "Q": self.Q,
-                             }
+                             "Pe_dt": self.Pe_dt,
+                             "Qus_dt": self.Qus_dt,
+                             "P_dt": self.P_dt,
+                             "Ep_dt": self.Ep_dt,}
+            
+                             
     def updating_obj_from_dict_var(self) -> None:
         """Function which inverts the dictionary above & sets objects correctly"""
         param_names = ["Imax","Ce", "Sumax", "Beta", "Pmax", "Tlag", "Kf", "Ks"]
@@ -446,9 +465,6 @@ def get_unixtime(Ts: np.datetime64) -> int:
     """Get unix timestamp (seconds since 1 january 1970) from a np.datetime64."""
     return  np.datetime64(Ts).astype("datetime64[s]").astype("int")
 
-import xarray as xr
-from pathlib import Path
-import json
 
 
 def read_config(config_file: str) -> dict:
@@ -486,4 +502,10 @@ def load_var(ncfile: str | Path, varname: str) -> xr.DataArray:
     data = xr.open_dataset(ncfile)
     assert "time" in data.dims
     assert varname in data.data_vars
+    if "units" in data[varname].attrs:
+        if data[varname].attrs['units'] == 'kg m-2 s-1':
+            data[varname] = data[varname] * 24 * 3600 #mm/day
+            #data[varname].attrs['units'] = 'mm d-1' TODO, fix.
+
+
     return data[varname]
