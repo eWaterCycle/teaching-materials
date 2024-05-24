@@ -82,6 +82,14 @@ class HBV_Bmi(Bmi):
 
         # stores corresponding objects for variables
 
+
+###############################################################################    
+
+    "Only adjust the update function!"
+
+###############################################################################    
+
+    
     def update(self) -> None:
             """ Updates model one timestep  """
             if self.current_timestep < self.end_timestep:
