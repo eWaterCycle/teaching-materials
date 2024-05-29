@@ -104,47 +104,47 @@ class HBV_Bmi(Bmi):
                     self.Si    = self.Si + self.P_dt               # increase the storage
                     self.Pe_dt = 0 # adjust if needed
                     self.Si    = 0 # adjust if needed
-                    self.Ei_dt = 0                          # if rainfall, evaporation = 0 as too moist
+                    self.Ei_dt = 0 # adjust if needed                         
                 else:
                     # Evaporation only when there is no rainfall
-                    self.Pe_dt = 0                      # nothing flows in so must be 0
+                    self.Pe_dt = 0 # adjust if needed
                     self.Ei_dt = 0 # adjust if needed
                     self.Si    = 0 # adjust if needed
 
                 # split flow into Unsaturated Reservoir and Fast flow
                 if self.Pe_dt > 0:
-                    cr       = (self.Su / self.Su_max)**self.beta
-                    Qiu_dt   = 0 # adjust if needed      # flux from Ir to Ur
+                    cr       = 0 # adjust if needed
+                    Qiu_dt   = 0 # adjust if needed      
                     self.Su  = 0 # adjust if needed
-                    Quf_dt   = 0 # adjust if needed            # flux from Su to Sf
+                    Quf_dt   = 0 # adjust if needed            
                 else:
-                    Quf_dt = 0
+                    Quf_dt   = 0   # adjust if needed         
 
                 # Transpiration
-                self.Ep_dt = max(0, self.Ep_dt - self.Ei_dt)        # Transpiration
+                self.Ep_dt = 0 # adjust if needed 
                 self.Ea_dt = 0 # adjust if needed
                 self.Ea_dt = 0 # adjust if needed
                 self.Su    = 0 # adjust if needed
 
                 # Percolation
                 self.Qus_dt = 0 # adjust if needed
-                self.Su  = 0 # adjust if needed
+                self.Su     = 0 # adjust if needed
 
                 # Fast Reservoir
-                self.Sf = 0 # adjust if needed
-                self.Qf_dt = self.dt * self.Kf * self.Sf
-                self.Sf = 0 # adjust if needed
+                self.Sf    = 0 # adjust if needed 
+                self.Qf_dt = 0 # adjust if needed
+                self.Sf    = 0 # adjust if needed
 
                 # Slow Reservoir
-                self.Ss = 0 # adjust if needed
+                self.Ss    = 0 # adjust if needed
                 self.Qs_dt = 0 # adjust if needed
-                self.Ss = 0 # adjust if needed
+                self.Ss    = 0 # adjust if needed
 
                 # total = fast + slow
-                self.Q_tot_dt = self.Qs_dt + self.Qf_dt
+                self.Q_tot_dt = 0 # adjust if needed
+                
                 # add time lag to the process - Qm is set here
                 self.add_time_lag()
-            
 
                 # Advance the model time by one step
                 self.current_timestep += 1
