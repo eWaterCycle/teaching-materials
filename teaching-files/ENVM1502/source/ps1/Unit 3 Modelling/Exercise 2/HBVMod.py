@@ -1,6 +1,5 @@
 import numpy       as np
 import matplotlib.pyplot as plt
-import pandas as pd
 from Weigfun import Weigfun
 
 def HBVMod(Par,forcing,Sin, hydrograph):
@@ -52,14 +51,14 @@ def HBVMod(Par,forcing,Sin, hydrograph):
         # Interception Reservoir
         if Pdt > 0:
             Si[i] = Si[i] + Pdt
-            Pedt = np.maximum(0, (Si[i] - Imax) / dt)
-            Si[i] = Si[i] - Pedt
-            Eidt[i] = 0
+            Pedt = 
+            Si[i] = 
+            Eidt[i] = 
         else:
         # Evaporation only when there is no rainfall
-            Pedt = np.maximum(0, (Si[i] - Imax) / dt) #is zero, because of no rainfall
-            Eidt[i] = np.minimum(Epdt, Si[i] / dt)
-            Si[i] = Si[i] - Pedt - Eidt[i]
+            Pedt = 
+            Eidt[i] = 
+            Si[i] = 
         
         if i < tmax-1:
             Si[i+1] = Si[i]
@@ -67,50 +66,50 @@ def HBVMod(Par,forcing,Sin, hydrograph):
         
         # Split Pe into Unsaturated Reservoir and Preferential reservoir
         if Pedt > 0:
-            Cr = (Su[i] / Sumax) ** beta
-            Qiudt = (1 - Cr) * Pedt # flux from Ir to Ur
-            Su[i] = Su[i] + Qiudt
-            Qufdt = Cr * Pedt #flux from Su to Sf
+            Cr = 
+            Qiudt = 
+            Su[i] = 
+            Qufdt = 
         else:
-            Qufdt = 0
+            Qufdt = 
         
         # Transpiration
-        Epdt = max(0, Epdt - Eidt[i])
-        Eadt[i] = Epdt * (Su[i] / (Sumax * Ce))
-        Eadt[i] = min(Su[i] / dt, Eadt[i])
-        Su[i] = Su[i] - Eadt[i]
+        Epdt = 
+        Eadt[i] =
+        Eadt[i] = 
+        Su[i] =
         
         # Percolation
-        Qusdt = Pmax * (Su[i] / Sumax) * dt # Flux from Su to Ss
-        Su[i] = Su[i] - Qusdt
+        Qusdt = 
+        Su[i] = 
         
         if i < tmax - 1:
             Su[i+1] = Su[i]
         
         # Fast Reservoir
-        Sf[i] = Sf[i] + Qufdt
-        Qfdt = dt * Kf * Sf[i]
-        Sf[i] = Sf[i] - Qfdt
+        Sf[i] = 
+        Qfdt =
+        Sf[i] =
         if i < tmax-1:
             Sf[i+1] = Sf[i]
         
         # Slow Reservoir
-        Ss[i] = Ss[i] + Qusdt
-        Qsdt = dt * Ks * Ss[i]
-        Ss[i] = Ss[i] - Qsdt
+        Ss[i] =
+        Qsdt = 
+        Ss[i] = 
         if i < tmax-1:
             Ss[i+1] = Ss[i]
         
-        Qtotdt[i] = Qsdt + Qfdt
-        Qs[i] = Qsdt 
-        Qf[i] = Qfdt 
+        Qtotdt[i] = 
+        Qs[i] = 
+        Qf[i] = 
 
 
     # Check Water Balance
     Sf = Si[-1] + Ss[-1] + Sf[-1] + Su[-1] #final storage
     Sin = sum(Sin) #initial storage
     WB = sum(Prec) - sum(Eidt) - sum(Eadt) - sum(Qtotdt) - Sf + Sin
-
+    print(WB)
     # Offset Q
 
     Weigths = Weigfun(Tlag)
@@ -123,11 +122,8 @@ def HBVMod(Par,forcing,Sin, hydrograph):
     ## Plot
     # hour=1:tmax\
         fig, ax = plt.subplots(figsize=(12,8))
-        forcing['Q'].plot(label='Observed', ax=ax)
+        forcing['Q'].plot(label='Obserbed', ax=ax)
         forcing['Qm'].plot(label='Model',  ax=ax)
-        ax.set_xlabel('Time [days]')
-        ax.set_ylabel('Runoff Q [$mmd^{-1}$]')
-        
         ax.legend()
         
 
