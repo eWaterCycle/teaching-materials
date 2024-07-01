@@ -32,7 +32,7 @@ def plot_hydrograph(Imax, Ce, Sumax, beta, Pmax, Tlag, Kf, Ks, model, forcing):
     plt.grid(True)
     plt.show()
 
-def interactive_plot(model, forcing, Sin):
+def interactive_plot(model, forcing):
     # Creating interactive widgets
     interact(
         plot_hydrograph,
