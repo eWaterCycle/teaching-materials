@@ -1,0 +1,5 @@
+{
+    "precipitation_file": "/home/rhut/repos/teaching-materials/teaching-files/esmvaltool_output/ewcrepcr56eu53_20240328_152558/work/diagnostic/script/CMIP6_EC-Earth3_day_historical_r6i1p1f1_pr_gr_2010-2010.nc",
+    "temperature_file": "/home/rhut/repos/teaching-materials/teaching-files/esmvaltool_output/ewcrepcr56eu53_20240328_152558/work/diagnostic/script/CMIP6_EC-Earth3_day_historical_r6i1p1f1_tas_gr_2010-2010.nc",
+    "leakiness": 0.05
+}
