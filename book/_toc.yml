@@ -2,12 +2,13 @@ format: jb-book
 root: intro.md
 
 parts:
-  - caption: Contents
+  - caption: Lumped Models
     chapters:
     - file: 1_modelling_intro_HBV/introHBV.md
       sections:
       - file: 1_modelling_intro_HBV/Exercise1.ipynb
       - file: 1_modelling_intro_HBV/Exercise2.ipynb
+  - caption: eWaterCycle platform
     chapters:
     - file: 2_modelling_advanced_ewatercycle/intro_ewatercycle.md
       sections:
@@ -16,6 +17,7 @@ parts:
       - file: 2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.ipynb
       - file: 2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.ipynb
       - file: 2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.ipynb
+  - caption: additional info
     chapters:
     - file: references.md
     - file: changelog.md
