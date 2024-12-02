@@ -4,9 +4,19 @@ root: intro.md
 parts:
   - caption: Contents
     chapters:
-    - file: some_content/overview.md
+    - file: 1_modelling_intro_HBV/introHBV.md
       sections:
-      - file: some_content/text_and_code.ipynb
+      - file: 1_modelling_intro_HBV/Exercise1.ipynb
+      - file: 1_modelling_intro_HBV/Exercise2.ipynb
+    chapters:
+    - file: 2_modelling_advanced_ewatercycle/intro_ewatercycle.md
+      sections:
+      - file: 2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.ipynb
+      - file: 2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.ipynb
+      - file: 2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.ipynb
+      - file: 2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.ipynb
+      - file: 2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.ipynb
+    chapters:
     - file: references.md
     - file: changelog.md
     - file: credits.md
