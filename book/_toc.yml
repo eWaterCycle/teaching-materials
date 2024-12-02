@@ -13,10 +13,10 @@ parts:
     - file: 2_modelling_advanced_ewatercycle/intro_ewatercycle.md
       sections:
       - file: 2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.ipynb
-      - file: 2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.ipynb
-      - file: 2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.ipynb
-      - file: 2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.ipynb
-      - file: 2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.ipynb
+      - file: 2_modelling_advanced_ewatercycle/exercise2_generate_ERA5_forcing_for_HBV.ipynb
+      - file: 2_modelling_advanced_ewatercycle/exercise3_run_HBV_eWaterCycle-once.ipynb
+      - file: 2_modelling_advanced_ewatercycle/exercise4_calibrate_HBV_eWaterCycle.ipynb
+      - file: 2_modelling_advanced_ewatercycle/exercise5_generate_CMIP6_forcing_for_HBV.ipynb
   - caption: additional info
     chapters:
     - file: references.md
