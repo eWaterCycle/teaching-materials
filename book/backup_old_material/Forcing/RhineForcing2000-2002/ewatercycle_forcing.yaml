@@ -1,0 +1,8 @@
+start_time: '2000-01-01T00:00:00Z'
+end_time: '2002-12-31T00:00:00Z'
+shape: Rhine.shp
+filenames:
+  pr: OBS6_ERA5_reanaly_1_day_pr_2000-2002.nc
+  tas: OBS6_ERA5_reanaly_1_day_tas_2000-2002.nc
+  rsds: OBS6_ERA5_reanaly_1_day_rsds_2000-2002.nc
+  evspsblpot: Derived_Makkink_evspsblpot.nc
