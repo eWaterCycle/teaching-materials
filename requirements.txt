@@ -7,3 +7,32 @@ download_link_replacer
 # now list the packages (and the respective url) you wish to download from the GitLab package registry
 --extra-index-url https://gitlab.tudelft.nl/api/v4/projects/11239/packages/pypi/simple
 sphinx-thebe ~= 0.9.9
+
+# additional packages might be useful in future development added on 5 december 2024
+
+jupyter-book
+numpy
+scipy
+matplotlib
+pandas
+pylance
+ipympl
+plotly
+myst_nb
+dataclasses
+pybtex
+labels
+sphinxcontrib-bibtex
+sphinx-exercise
+jupyterquiz
+docutils==0.17.1     # This specific version of Docutils is required to avoid the empty brackets showing up in the "Bibliography"
+
+# added additionally 31 oktober 2024
+ipywidgets
+widgetsnbextension
+--extra-index-url https://gitlab.tudelft.nl/api/v4/projects/11239/packages/pypi/simple
+sphinx-thebe ~= 0.9.9
+micropip
+dash
+dash_daq
+jupyterlab-widgets

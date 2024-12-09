@@ -1,0 +1,7 @@
+Manual eWaterCycle Education
+
+
+Existing exercises need to be converted to notebooks to be used in eWaterCycle.  
+The model need to be converted to a class. 
+
+Data for a region can be acquired by adding a shapefile to the directory and load into the notebook. 
