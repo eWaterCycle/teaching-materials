@@ -23,6 +23,8 @@ sphinx:
       use_repository_button: true
       use_issues_button : true
       launch_buttons:
+        jupyterhub_url: https://ewc231stud2.ewatercycle-tud.src.surf-hosted.nl/jupyter
+        notebook_interface: "jupyterlab"
         thebe: true
     html_show_copyright: false
     html_last_updated_fmt: '%B %-d, %Y'
