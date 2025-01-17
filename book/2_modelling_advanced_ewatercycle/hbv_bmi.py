@@ -50,7 +50,7 @@ class HBV_Bmi(Bmi):
         self.P = load_var(self.config["precipitation_file"], "pr")
 
         # add Tas, Tmin and Tmax support for snow component ??!
-        self.EP = load_var(self.config["potential_evaporation_file"], "pev")
+        self.EP = load_var(self.config["potential_evaporation_file"], "evspsblpot")
 
         # set up times
         self.Ts = self.P['time'].astype("datetime64[s]")
