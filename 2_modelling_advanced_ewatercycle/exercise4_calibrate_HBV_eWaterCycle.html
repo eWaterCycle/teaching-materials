@@ -1,0 +1,1071 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Exercise 4: Calibrate HBV model with ERA5 forcing and GRDC observation &#8212; Teaching Material on Hydrological Modelling used in ENVM1502 course at Delft University of Technology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebe.css?v=9bca0c2f" />
+    <link rel="stylesheet" type="text/css" href="../_static/code.css?v=4bf7ba55" />
+    <link rel="stylesheet" type="text/css" href="../_static/image_dark_mode.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/fix_admonition_style.css?v=8627ce31" />
+    <link rel="stylesheet" type="text/css" href="../_static/fix_dropdown_style.css?v=f3461767" />
+    <link rel="stylesheet" type="text/css" href="../_static/fix_code_header_style.css?v=7d542921" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="../_static/refresh.js?v=9bea9b76"></script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script defer="defer" src="../_static/sphinx-thebe-lite.js?v=2a71eeb1"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_modelling_advanced_ewatercycle/exercise4_calibrate_HBV_eWaterCycle';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="canonical" href="https://github.com/eWaterCycle/teaching-materials/2_modelling_advanced_ewatercycle/exercise4_calibrate_HBV_eWaterCycle.html" />
+    <link rel="icon" href="../_static/TB_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercise 5: Generate forcing for any region from CMIP6 for HBV model" href="exercise5_generate_CMIP6_forcing_for_HBV.html" />
+    <link rel="prev" title="Exercise 3: Run HBV model with ERA5 forcing and GRDC observation" href="exercise3_run_HBV_eWaterCycle-once.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="February 4, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Teaching Material on Hydrological Modelling used in ENVM1502 course at Delft University of Technology</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lumped Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1_modelling_intro_HBV/Exercise1.html">Modelling exercise 1: Linear Reservoir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_modelling_intro_HBV/Exercise2.html">Models Exercise 2: Lumped Conceptual Model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">eWaterCycle platform</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="exercise1_build_test_HBV_eWaterCycle.html">Exercise 1. Test your own HBV model on eWaterCycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise2_generate_ERA5_forcing_for_HBV.html">Exercise 2. Generate forcing for any region from ERA5 for HBV model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise3_run_HBV_eWaterCycle-once.html">Exercise 3: Run HBV model with ERA5 forcing and GRDC observation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercise 4: Calibrate HBV model with ERA5 forcing and GRDC observation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="exercise5_generate_CMIP6_forcing_for_HBV.html">Exercise 5: Generate forcing for any region from CMIP6 for HBV model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">advanced FlexTopo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_modelling_advanced_flextopo/exercise6_flextopo.html">Exercise Flextopo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">additional info</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">Credits and License</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://ewc231stud2.ewatercycle-tud.src.surf-hosted.nl/jupyter/hub/user-redirect/git-pull?repo=https%3A//github.com/eWaterCycle/teaching-materials&urlpath=lab/tree/teaching-materials/2_modelling_advanced_ewatercycle/exercise4_calibrate_HBV_eWaterCycle.ipynb&branch=master" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/eWaterCycle/teaching-materials" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/eWaterCycle/teaching-materials/issues/new?title=Issue%20on%20page%20%2F2_modelling_advanced_ewatercycle/exercise4_calibrate_HBV_eWaterCycle.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/2_modelling_advanced_ewatercycle/exercise4_calibrate_HBV_eWaterCycle.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exercise 4: Calibrate HBV model with ERA5 forcing and GRDC observation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 4: Calibrate HBV model with ERA5 forcing and GRDC observation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-multiple-hbv-models-with-different-parameters">Create multiple HBV models with different parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-and-objective-function">Observations and objective function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyse-results">Analyse results</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-create-your-own-calibration-method">Exercise: Create your own calibration method!</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration">Calibration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-files">Note on files</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-4-calibrate-hbv-model-with-era5-forcing-and-grdc-observation">
+<h1>Exercise 4: Calibrate HBV model with ERA5 forcing and GRDC observation<a class="headerlink" href="#exercise-4-calibrate-hbv-model-with-era5-forcing-and-grdc-observation" title="Link to this heading">#</a></h1>
+<p>In this notebook you will calibrate your own HBV model using ERA5 forcing data (from the previous notebook) and GRDC observation data. You will have to change a few settings below. Only a very simple (bad!) calibration is provided. It is up to you to optimize the calibration for your specific region. Read carefully and decide which inputs and lines to change.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#load all dependencies, including your own model through ewatercycle_wrapper_HBV</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ewatercycle.forcing</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ewatercycle.observation.grdc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ewatercycle.analysis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cartopy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">shapereader</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntProgress</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ewatercycle_wrapper_HBV</span><span class="w"> </span><span class="kn">import</span> <span class="n">HBV</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/envs/ewatercycle2/lib/python3.10/site-packages/esmvalcore/experimental/_warnings.py:13: UserWarning: 
+  Thank you for trying out the new ESMValCore API.
+  Note that this API is experimental and may be subject to change.
+  More info: https://github.com/ESMValGroup/ESMValCore/issues/498
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#name of your shapefile/region without extension:</span>
+<span class="n">own_region</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1">#for example: &quot;Rhine&quot;</span>
+
+<span class="k">if</span> <span class="n">own_region</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># if nothing is provided, the Rhine shapefile will be used</span>
+    <span class="n">own_region</span> <span class="o">=</span> <span class="s2">&quot;Rhine&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#shapefile that describes the basin we want to study.</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+<span class="n">forcing_path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">/</span> <span class="s2">&quot;Forcing&quot;</span>
+<span class="n">shapeFile</span> <span class="o">=</span> <span class="n">forcing_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">own_region</span><span class="si">}</span><span class="s2">.shp&quot;</span>
+
+<span class="c1">#location to saved forcing results from previous notebook</span>
+<span class="n">forcingLocation</span> <span class="o">=</span> <span class="n">forcing_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">own_region</span><span class="si">}</span><span class="s2">Forcing2000-2002&quot;</span>
+
+<span class="c1">#GRDC station ID for the observation station</span>
+<span class="n">grdc_station_id</span> <span class="o">=</span> <span class="s2">&quot;6335020&quot;</span>  <span class="c1"># GRDC station ID</span>
+<span class="n">basin_name</span> <span class="o">=</span> <span class="n">own_region</span>
+
+<span class="c1">#period of interest. Make sure that GRDC data is available for this period and that it matches your forcing data</span>
+<span class="n">experiment_start_time</span><span class="o">=</span><span class="s2">&quot;2000-01-01T00:00:00Z&quot;</span>
+<span class="n">experiment_end_time</span><span class="o">=</span><span class="s2">&quot;2002-12-31T00:00:00Z&quot;</span>
+
+<span class="c1">#calibration period</span>
+<span class="n">calibration_start_time</span><span class="o">=</span><span class="s2">&quot;2001-01-01T00:00:00Z&quot;</span>
+<span class="n">calibration_end_time</span><span class="o">=</span><span class="s2">&quot;2001-12-31T00:00:00Z&quot;</span>
+
+<span class="c1">#validation period</span>
+<span class="n">validation_start_time</span><span class="o">=</span><span class="s2">&quot;2001-01-01T00:00:00Z&quot;</span>
+<span class="n">validation_end_time</span><span class="o">=</span><span class="s2">&quot;2001-12-31T00:00:00Z&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Forcing was created in the previous notebook and loaded gere</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ERA5_forcing</span> <span class="o">=</span> <span class="n">ewatercycle</span><span class="o">.</span><span class="n">forcing</span><span class="o">.</span><span class="n">sources</span><span class="p">[</span><span class="s2">&quot;LumpedMakkinkForcing&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">forcingLocation</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ERA5_forcing</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #800080; text-decoration-color: #800080; font-weight: bold">LumpedMakkinkForcing</span><span style="font-weight: bold">(</span>
+    <span style="color: #808000; text-decoration-color: #808000">start_time</span>=<span style="color: #008000; text-decoration-color: #008000">'2000-01-01T00:00:00Z'</span>,
+    <span style="color: #808000; text-decoration-color: #808000">end_time</span>=<span style="color: #008000; text-decoration-color: #008000">'2002-12-31T00:00:00Z'</span>,
+    <span style="color: #808000; text-decoration-color: #808000">directory</span>=<span style="color: #800080; text-decoration-color: #800080; font-weight: bold">PosixPath</span><span style="font-weight: bold">(</span><span style="color: #008000; text-decoration-color: #008000">'/home/rhut/repos/teaching-materials/teaching-files/Forcing/RhineForcing2000-2002'</span><span style="font-weight: bold">)</span>,
+    <span style="color: #808000; text-decoration-color: #808000">shape</span>=<span style="color: #800080; text-decoration-color: #800080; font-weight: bold">PosixPath</span><span style="font-weight: bold">(</span><span style="color: #008000; text-decoration-color: #008000">'/home/rhut/repos/teaching-materials/teaching-files/Forcing/RhineForcing2000-2002/Rhine.shp'</span><span style="font-weight: bold">)</span>,
+    <span style="color: #808000; text-decoration-color: #808000">filenames</span>=<span style="font-weight: bold">{</span>
+        <span style="color: #008000; text-decoration-color: #008000">'pr'</span>: <span style="color: #008000; text-decoration-color: #008000">'OBS6_ERA5_reanaly_1_day_pr_2000-2002.nc'</span>,
+        <span style="color: #008000; text-decoration-color: #008000">'tas'</span>: <span style="color: #008000; text-decoration-color: #008000">'OBS6_ERA5_reanaly_1_day_tas_2000-2002.nc'</span>,
+        <span style="color: #008000; text-decoration-color: #008000">'rsds'</span>: <span style="color: #008000; text-decoration-color: #008000">'OBS6_ERA5_reanaly_1_day_rsds_2000-2002.nc'</span>,
+        <span style="color: #008000; text-decoration-color: #008000">'evspsblpot'</span>: <span style="color: #008000; text-decoration-color: #008000">'Derived_Makkink_evspsblpot.nc'</span>
+    <span style="font-weight: bold">}</span>
+<span style="font-weight: bold">)</span>
+</pre>
+</div></div>
+</div>
+<section id="create-multiple-hbv-models-with-different-parameters">
+<h2>Create multiple HBV models with different parameters<a class="headerlink" href="#create-multiple-hbv-models-with-different-parameters" title="Link to this heading">#</a></h2>
+<p>Because in eWaterCycle models are objects, we can create arrays of models. In this way, we can quickly create an array of multiple models. In case of models we call this: ‘an ensemble of models’. Each model (called ‘ensemble member’) will be given its own parameters. So before we make the ensmeble, we have to create a set of parameters that we want to give to them. I will just use linear interpolation of the parameter space. (I suggest you come up with something smarter for your own calibration!)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#we use the same initial conditions for all models in the ensemble</span>
+
+<span class="n">s_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">100</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">5</span><span class="p">])</span>
+<span class="n">S_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Interception storage&quot;</span><span class="p">,</span> <span class="s2">&quot;Unsaturated Rootzone Storage&quot;</span><span class="p">,</span> <span class="s2">&quot;Fastflow storage&quot;</span><span class="p">,</span> <span class="s2">&quot;Groundwater storage&quot;</span><span class="p">]</span>
+
+<span class="c1">#the names of the parameters are (luckily ;-) ) also constant for all models</span>
+<span class="n">p_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;$I_</span><span class="si">{max}</span><span class="s2">$&quot;</span><span class="p">,</span>  <span class="s2">&quot;$C_e$&quot;</span><span class="p">,</span>  <span class="s2">&quot;$Su_</span><span class="si">{max}</span><span class="s2">$&quot;</span><span class="p">,</span> <span class="s2">&quot;β&quot;</span><span class="p">,</span>  <span class="s2">&quot;$P_</span><span class="si">{max}</span><span class="s2">$&quot;</span><span class="p">,</span>  <span class="s2">&quot;$T_</span><span class="si">{lag}</span><span class="s2">$&quot;</span><span class="p">,</span>   <span class="s2">&quot;$K_f$&quot;</span><span class="p">,</span>   <span class="s2">&quot;$K_s$&quot;</span><span class="p">]</span>
+<span class="n">param_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Imax&quot;</span><span class="p">,</span><span class="s2">&quot;Ce&quot;</span><span class="p">,</span>  <span class="s2">&quot;Sumax&quot;</span><span class="p">,</span> <span class="s2">&quot;beta&quot;</span><span class="p">,</span>  <span class="s2">&quot;Pmax&quot;</span><span class="p">,</span>  <span class="s2">&quot;Tlag&quot;</span><span class="p">,</span>   <span class="s2">&quot;Kf&quot;</span><span class="p">,</span>   <span class="s2">&quot;Ks&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#The number of ensemble members in our ensemble</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">p_min_initial</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span>   <span class="mf">0.2</span><span class="p">,</span>  <span class="mi">40</span><span class="p">,</span>    <span class="mf">.5</span><span class="p">,</span>   <span class="mf">.001</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>     <span class="mf">.01</span><span class="p">,</span>  <span class="mf">.0001</span><span class="p">])</span>
+<span class="n">p_max_initial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>  <span class="mi">800</span><span class="p">,</span>   <span class="mi">4</span><span class="p">,</span>    <span class="mf">.3</span><span class="p">,</span>     <span class="mi">10</span><span class="p">,</span>    <span class="mf">.1</span><span class="p">,</span>   <span class="mf">.01</span><span class="p">])</span>
+
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="n">N</span><span class="p">])</span>
+
+<span class="c1">#here I use np.linspace to make a linear interpolation between the minimum and maximum parameters. Realize that this means that the first model will</span>
+<span class="c1">#get all low parameters and the last model will get all high parameters. This can be done much smarter.</span>
+<span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">parameters</span><span class="p">[</span><span class="n">param</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">p_min_initial</span><span class="p">[</span><span class="n">param</span><span class="p">],</span><span class="n">p_max_initial</span><span class="p">[</span><span class="n">param</span><span class="p">],</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ensemble</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">counter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span> 
+    <span class="n">ensemble</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">HBV</span><span class="p">(</span><span class="n">forcing</span><span class="o">=</span><span class="n">ERA5_forcing</span><span class="p">))</span>
+    <span class="n">config_file</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ensemble</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span>
+                            <span class="n">parameters</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">[:,</span><span class="n">counter</span><span class="p">]]),</span>
+                            <span class="n">initial_storage</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">s_0</span><span class="p">]),</span>
+                            <span class="n">cfg_dir</span> <span class="o">=</span> <span class="s2">&quot;configFiles/hbv_ensembleMember_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">counter</span><span class="p">),</span>
+                               <span class="p">)</span>
+    <span class="n">ensemble</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+/home/rhut/repos/teaching-materials/teaching-files/hbv_bmi.py:57: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="observations-and-objective-function">
+<h2>Observations and objective function<a class="headerlink" href="#observations-and-objective-function" title="Link to this heading">#</a></h2>
+<p>We will compare each model output to observations and we need some sort of objective function to judge if the output is any good and thus determine which parameters are good for this region. I provide a basic (bad!) objective function here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Loading the GRDS observations</span>
+<span class="n">observations_df</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">ewatercycle</span><span class="o">.</span><span class="n">observation</span><span class="o">.</span><span class="n">grdc</span><span class="o">.</span><span class="n">get_grdc_data</span><span class="p">(</span>
+    <span class="n">station_id</span><span class="o">=</span><span class="n">grdc_station_id</span><span class="p">,</span>
+    <span class="n">start_time</span><span class="o">=</span><span class="n">experiment_start_time</span><span class="p">,</span>
+    <span class="n">end_time</span><span class="o">=</span><span class="n">experiment_end_time</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">grdc_obs</span> <span class="o">=</span> <span class="n">observations_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;streamflow&quot;</span><span class="p">:</span> <span class="s2">&quot;Observations from GRDC&quot;</span><span class="p">})</span>
+<span class="n">grdc_lon</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;grdc_longitude_in_arc_degree&quot;</span><span class="p">]</span>
+<span class="n">grdc_lat</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;grdc_latitude_in_arc_degree&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remember from the previous notebook that we need the area of the catchment to calculate discharge in <span class="math notranslate nohighlight">\(m^3/s\)</span> instead of <span class="math notranslate nohighlight">\(mm/day\)</span>. This time, we will do that conversion directly when we ask discharge from the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shapeObject</span> <span class="o">=</span> <span class="n">shapereader</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="n">shapeFile</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span>
+<span class="n">record</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">shapeObject</span><span class="o">.</span><span class="n">records</span><span class="p">())</span>
+<span class="n">shape_area</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s2">&quot;SUB_AREA&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e6</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The catchment area is:&quot;</span><span class="p">,</span> <span class="n">shape_area</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">The catchment area is: <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">163122500000.0</span>
+</pre>
+</div></div>
+</div>
+<p>Here we define the objective function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calibrationObjective</span><span class="p">(</span><span class="n">modelOutput</span><span class="p">,</span> <span class="n">observation</span><span class="p">,</span> <span class="n">start_calibration</span><span class="p">,</span> <span class="n">end_calibration</span><span class="p">):</span>
+    <span class="c1"># a function that takes in two dataFrames, interpolates the model output to the</span>
+    <span class="c1"># observations and calculates the average absolute difference between the two.</span>
+
+    <span class="c1">#combine the two in one dataFrame</span>
+    <span class="n">hydro_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">modelOutput</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">observation</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;ffill&#39;</span><span class="p">),</span> <span class="n">observation</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1">#only select the calibration period</span>
+    <span class="n">hydro_data</span> <span class="o">=</span> <span class="n">hydro_data</span><span class="p">[</span><span class="n">hydro_data</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">start_calibration</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">())]</span>
+    <span class="n">hydro_data</span> <span class="o">=</span> <span class="n">hydro_data</span><span class="p">[</span><span class="n">hydro_data</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">end_calibration</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">())]</span>
+
+    <span class="c1">#calculate mean absolute difference</span>
+
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">hydro_data</span><span class="p">[</span><span class="s1">&#39;Observations from GRDC&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">hydro_data</span><span class="p">[</span><span class="s1">&#39;model output&#39;</span><span class="p">]</span>
+    <span class="n">absDiff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+    <span class="n">meanAbsDiff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">absDiff</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">meanAbsDiff</span>
+  
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we run the entire ensemble. Note that in theory this loop can be run in parallel. If you have access to many core (or a supercomputer), this loop can be speed up considerably! For HBV this is not really a problem, but when doing calibration with larger models, this is a must.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#an object to show a progress bar, since this can take a while:</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">IntProgress</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">N</span><span class="p">)</span> <span class="c1"># instantiate the bar</span>
+<span class="n">display</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="c1"># display the bar</span>
+
+<span class="c1">#an empty array to store the results in</span>
+<span class="n">objectives</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">#loop over all ensemble members</span>
+<span class="k">for</span> <span class="n">ensembleMember</span> <span class="ow">in</span> <span class="n">ensemble</span><span class="p">:</span>
+    <span class="n">Q_m</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="n">ensembleMember</span><span class="o">.</span><span class="n">time</span> <span class="o">&lt;</span> <span class="n">ensembleMember</span><span class="o">.</span><span class="n">end_time</span><span class="p">:</span>
+        <span class="n">ensembleMember</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="n">discharge_this_timestep</span> <span class="o">=</span> <span class="n">ensembleMember</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s2">&quot;Q&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="n">shape_area</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1000</span> <span class="o">*</span> <span class="mi">86400</span><span class="p">)</span>
+        <span class="n">Q_m</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">discharge_this_timestep</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">ensembleMember</span><span class="o">.</span><span class="n">time_as_datetime</span><span class="o">.</span><span class="n">date</span><span class="p">()))</span>
+    
+    <span class="c1">#calculate the objective function </span>
+    <span class="n">discharge_dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;model output&#39;</span><span class="p">:</span> <span class="n">Q_m</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">objective_this_model</span> <span class="o">=</span> <span class="n">calibrationObjective</span><span class="p">(</span><span class="n">discharge_dataframe</span><span class="p">,</span><span class="n">grdc_obs</span><span class="p">,</span><span class="n">calibration_start_time</span><span class="p">,</span><span class="n">calibration_end_time</span><span class="p">)</span>
+    <span class="n">objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">objective_this_model</span><span class="p">)</span>
+
+    <span class="c1">#it is good practice to remove any variable you don&#39;t need anymore to save memory.</span>
+    <span class="k">del</span> <span class="n">Q_m</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">discharge_dataframe</span><span class="p">,</span> <span class="n">objective_this_model</span>
+
+    <span class="c1">#update progress bar</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">value</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "38dacd3284074e639ba7aa689d4ae06f", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#finaly, just like before, we remove the models themselves to save up space and memory.</span>
+<span class="k">for</span> <span class="n">ensembleMember</span> <span class="ow">in</span> <span class="n">ensemble</span><span class="p">:</span>
+    <span class="n">ensembleMember</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="analyse-results">
+<h2>Analyse results<a class="headerlink" href="#analyse-results" title="Link to this heading">#</a></h2>
+<p>We now have objective function results for all ensemble members! Let’s make some plots!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xFigNr</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">yFigNr</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">xFigNr</span><span class="p">,</span> <span class="n">yFigNr</span><span class="p">,</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">xFig</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">xFigNr</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">yFig</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">yFigNr</span><span class="p">):</span>
+        <span class="n">paramCounter</span> <span class="o">=</span> <span class="n">xFig</span><span class="o">*</span><span class="n">yFigNr</span> <span class="o">+</span> <span class="n">yFig</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">xFig</span><span class="p">,</span><span class="n">yFig</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="n">paramCounter</span><span class="p">,:],</span><span class="n">objectives</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">xFig</span><span class="p">,</span><span class="n">yFig</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">p_names</span><span class="p">[</span><span class="n">paramCounter</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ae25495459b90136e37533094f54b30f671e0f766e3bbb3fd8564786bf20b1e1.png" src="../_images/ae25495459b90136e37533094f54b30f671e0f766e3bbb3fd8564786bf20b1e1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#let&#39;s also show the minimal values:</span>
+<span class="n">parameters_minimum_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">objectives</span><span class="p">))</span>
+
+<span class="n">parameters_minimum</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[:,</span><span class="n">parameters_minimum_index</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">parameters_minimum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">[</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">5.55102041e+00</span> <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7.55102041e-01</span> <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">5.67346939e+02</span> <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2.92857143e+00</span>
+ <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2.08469388e-01</span> <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7.24489796e+00</span> <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7.24489796e-02</span> <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">6.96938776e-03</span><span style="font-weight: bold">]</span>
+</pre>
+</div></div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-create-your-own-calibration-method">
+<h1>Exercise: Create your own calibration method!<a class="headerlink" href="#exercise-create-your-own-calibration-method" title="Link to this heading">#</a></h1>
+<section id="calibration">
+<h2>Calibration<a class="headerlink" href="#calibration" title="Link to this heading">#</a></h2>
+<p>As mentioned above: the method of choosing parameters is bad and the objective function is also far from optimal in this notebook. In this exercise, you will again an ensemble, but now you are askes to use another method to create the parameters and use Nash and Sutcliffe coefficient as objective function. Calculate both the normal NSE and the log(NSE). Compare both and see (and understand) what the difference is between them?</p>
+<p>The Nash and Sutcliffe coefficient is calculated using the formula:</p>
+<p>\begin{equation}
+N = 1 - \frac{\sum_{i=1}^{n}(Q_{o,i} - Q_{m,i})^2}{\sum_{i=1}^{n}(O_{o,i} - \bar{O}_{o})^2}
+\end{equation}</p>
+<p>Where Q is discharge, the subscripts o and m stand for observed and modeled respectively, i is the time step, and the overbar indicates an average.</p>
+<p>Use the code cells below to create the calibration method. Calculate the NSE value for 5000 ensemble members. Re-use the structure of the code above and edit it to create a randomly chosen parameter set and calculate the objectives NSE and Log(NSE). What is the optimal parameter set for your region?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#                   Imax Ce Sumax beta Pmax   Tlag   Kf  Ks</span>
+<span class="n">ParMinn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span>   <span class="mf">0.2</span><span class="p">,</span>  <span class="mi">40</span><span class="p">,</span>    <span class="mf">.5</span><span class="p">,</span>   <span class="mf">.001</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>     <span class="mf">.01</span><span class="p">,</span>  <span class="mf">.0001</span><span class="p">])</span>
+<span class="n">ParMaxn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>  <span class="mi">800</span><span class="p">,</span>   <span class="mi">4</span><span class="p">,</span>    <span class="mf">.3</span><span class="p">,</span>     <span class="mi">10</span><span class="p">,</span>    <span class="mf">.1</span><span class="p">,</span>   <span class="mf">.01</span><span class="p">])</span>
+<span class="n">Sin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">100</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">5</span>  <span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a random parameter set based on the ParMinn and ParMaxn array. Do not use np.linspace as above. </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create new objective function:</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calibrationObjective</span><span class="p">(</span><span class="n">modelOutput</span><span class="p">,</span> <span class="n">observation</span><span class="p">,</span> <span class="n">start_calibration</span><span class="p">,</span> <span class="n">end_calibration</span><span class="p">):</span>
+
+    
+
+
+
+    <span class="k">return</span> <span class="n">nse</span><span class="p">,</span> <span class="n">log_nse</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#an object to show a progress bar, since this can take a while:</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">IntProgress</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">N</span><span class="p">)</span> <span class="c1"># instantiate the bar</span>
+<span class="n">display</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="c1"># display the bar</span>
+
+<span class="c1">#an empty array to store the results in</span>
+<span class="n">objectives</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">#loop over all ensemble members</span>
+<span class="k">for</span> <span class="n">ensembleMember</span> <span class="ow">in</span> <span class="n">ensemble</span><span class="p">:</span>
+    <span class="n">Q_m</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="n">ensembleMember</span><span class="o">.</span><span class="n">time</span> <span class="o">&lt;</span> <span class="n">ensembleMember</span><span class="o">.</span><span class="n">end_time</span><span class="p">:</span>
+        <span class="n">ensembleMember</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="n">discharge_this_timestep</span> <span class="o">=</span> <span class="n">ensembleMember</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s2">&quot;Q&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="n">shape_area</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1000</span> <span class="o">*</span> <span class="mi">86400</span><span class="p">)</span>
+        <span class="n">Q_m</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">discharge_this_timestep</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">ensembleMember</span><span class="o">.</span><span class="n">time_as_datetime</span><span class="o">.</span><span class="n">date</span><span class="p">()))</span>
+    
+    <span class="c1">#calculate the objective function </span>
+    <span class="n">discharge_dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;model output&#39;</span><span class="p">:</span> <span class="n">Q_m</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">objective_this_model</span> <span class="o">=</span> <span class="n">calibrationObjective</span><span class="p">(</span><span class="n">discharge_dataframe</span><span class="p">,</span><span class="n">grdc_obs</span><span class="p">,</span><span class="n">calibration_start_time</span><span class="p">,</span><span class="n">calibration_end_time</span><span class="p">)</span>
+    <span class="n">objectives</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">objective_this_model</span><span class="p">)</span>
+
+    <span class="c1">#it is good practice to remove any variable you don&#39;t need anymore to save memory.</span>
+    <span class="k">del</span> <span class="n">Q_m</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">discharge_dataframe</span><span class="p">,</span> <span class="n">objective_this_model</span>
+
+    <span class="c1">#update progress bar</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">value</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1">#finaly, just like before, we remove the models themselves to save up space and memory.</span>
+<span class="k">for</span> <span class="n">ensembleMember</span> <span class="ow">in</span> <span class="n">ensemble</span><span class="p">:</span>
+    <span class="n">ensembleMember</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xFigNr</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">yFigNr</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">fig_nse</span><span class="p">,</span> <span class="n">axs_nse</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">xFigNr</span><span class="p">,</span> <span class="n">yFigNr</span><span class="p">,</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+<span class="n">fig_nselog</span><span class="p">,</span> <span class="n">axs_nselog</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">xFigNr</span><span class="p">,</span> <span class="n">yFigNr</span><span class="p">,</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">xFig</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">xFigNr</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">yFig</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">yFigNr</span><span class="p">):</span>
+        <span class="n">paramCounter</span> <span class="o">=</span> <span class="n">xFig</span><span class="o">*</span><span class="n">yFigNr</span> <span class="o">+</span> <span class="n">yFig</span>
+        <span class="c1"># Extract NSE and log NSE for all runs</span>
+        <span class="n">nse_values</span> <span class="o">=</span> <span class="n">objectives</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">log_nse_values</span> <span class="o">=</span> <span class="n">objectives</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+        
+        <span class="n">axs</span><span class="p">[</span><span class="n">xFig_nse</span><span class="p">,</span><span class="n">yFig_nse</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="n">paramCounter</span><span class="p">,:],</span><span class="n">nse_values</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;NSE&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">xFig_nse</span><span class="p">,</span><span class="n">yFig_nse</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">p_names</span><span class="p">[</span><span class="n">paramCounter</span><span class="p">])</span>
+        
+        <span class="n">axs</span><span class="p">[</span><span class="n">xFig_nselog</span><span class="p">,</span><span class="n">yFig_nselog</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="n">paramCounter</span><span class="p">,:],</span><span class="n">log_nse_values</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;log NSE&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">xFig_nselog</span><span class="p">,</span><span class="n">yFig_nselog</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">p_names</span><span class="p">[</span><span class="n">paramCounter</span><span class="p">])</span>
+
+        <span class="n">axs</span><span class="p">[</span><span class="n">xFig_nse</span><span class="p">,</span><span class="n">yFig_nse</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">xFig_nselog</span><span class="p">,</span><span class="n">yFig_nselog</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Link to this heading">#</a></h2>
+<p>If you look carefully in the first few cells of this notebook, you can see that a different calibration and validation period is added. You can extend this notebook and calculate the values of the objective function for the validation period: how does the model perform for the periods where it was not calibrated for?</p>
+</section>
+<section id="note-on-files">
+<h2>Note on files<a class="headerlink" href="#note-on-files" title="Link to this heading">#</a></h2>
+<p>Each model now has its own directory in the configFiles directory. If everything goes well, these are deleted with the <code class="docutils literal notranslate"><span class="pre">finalize()</span></code> command above. If however due to an error, they persist, you may not be able to create a new ensemble. In that case, uncomment the line in the cell below and run that. But be careful! this will remove all the files in the configFiles directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!rm -r configFiles/*</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+        <script type="text/x-thebe-config">
+        {
+            "rootPath": "..",
+            "requestKernel": true,
+            "useJupyterLite": true,
+            "useBinder": false,
+            "kernelOptions": {
+                "path": "/"
+            },
+            "codeMirrorConfig": {
+                "theme": "default",
+                "mode": "python"
+            },
+            "mountRestartButton": false,
+            "mountRestartallButton": false
+        }
+        </script>
+        <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="exercise3_run_HBV_eWaterCycle-once.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exercise 3: Run HBV model with ERA5 forcing and GRDC observation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="exercise5_generate_CMIP6_forcing_for_HBV.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exercise 5: Generate forcing for any region from CMIP6 for HBV model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 4: Calibrate HBV model with ERA5 forcing and GRDC observation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-multiple-hbv-models-with-different-parameters">Create multiple HBV models with different parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-and-objective-function">Observations and objective function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyse-results">Analyse results</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-create-your-own-calibration-method">Exercise: Create your own calibration method!</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration">Calibration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-files">Note on files</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Teaching Material by Markus Hrachowitz (TU Delft). eWaterCycle platform by Rolf Hut (TU Delft), Bart Schilperoort (Netherlands eScience Center) and the bigger ewaterCycle team, including much work building the jupyter book by Anne Verslijen, Ahmed Farahat and Ezzat Qadriyeh. Jupyter book version uilt with <a href="https://teachbooks.tudelft.nl/">TeachBooks</a> and <a href="https://jupyterbook.org/">Jupyter Book</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="license noopener noreferrer"">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt=""></a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on February 4, 2025.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

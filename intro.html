@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Welcome to the Template Book &#8212; Template</title>
+    <title>Hydrological modelling &#8212; Teaching Material on Hydrological Modelling used in ENVM1502 course at Delft University of Technology</title>
   
   
   
@@ -73,13 +73,15 @@ const thebe_selector_output = ".output, .cell_output"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <link rel="canonical" href="https://teachbooks.github.io/template/intro.html" />
+    <link rel="canonical" href="https://github.com/eWaterCycle/teaching-materials/intro.html" />
     <link rel="icon" href="_static/TB_favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Overview" href="some_content/overview.html" />
+    <link rel="next" title="Modelling exercise 1: Linear Reservoir" href="1_modelling_intro_HBV/Exercise1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -159,14 +161,8 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/TB_logo.png" class="logo__image only-light" alt="Template - Home"/>
-    <img src="_static/TB_logo.png" class="logo__image only-dark pst-js-only" alt="Template - Home"/>
   
+    <p class="title logo__title">Teaching Material on Hydrological Modelling used in ENVM1502 course at Delft University of Technology</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -178,12 +174,26 @@ const thebe_selector_output = ".output, .cell_output"
 </button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lumped Models</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="some_content/overview.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="some_content/text_and_code.html">Text and code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_modelling_intro_HBV/Exercise1.html">Modelling exercise 1: Linear Reservoir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_modelling_intro_HBV/Exercise2.html">Models Exercise 2: Lumped Conceptual Model</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">eWaterCycle platform</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.html">Exercise 1. Test your own HBV model on eWaterCycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_modelling_advanced_ewatercycle/exercise2_generate_ERA5_forcing_for_HBV.html">Exercise 2. Generate forcing for any region from ERA5 for HBV model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_modelling_advanced_ewatercycle/exercise3_run_HBV_eWaterCycle-once.html">Exercise 3: Run HBV model with ERA5 forcing and GRDC observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_modelling_advanced_ewatercycle/exercise4_calibrate_HBV_eWaterCycle.html">Exercise 4: Calibrate HBV model with ERA5 forcing and GRDC observation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="2_modelling_advanced_ewatercycle/exercise5_generate_CMIP6_forcing_for_HBV.html">Exercise 5: Generate forcing for any region from CMIP6 for HBV model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">advanced FlexTopo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="3_modelling_advanced_flextopo/exercise6_flextopo.html">Exercise Flextopo</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">additional info</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits and License</a></li>
@@ -246,7 +256,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/TeachBooks/template" target="_blank"
+      <li><a href="https://github.com/eWaterCycle/teaching-materials" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -263,7 +273,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/TeachBooks/template/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/eWaterCycle/teaching-materials/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -367,7 +377,7 @@ const thebe_selector_output = ".output, .cell_output"
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Welcome to the Template Book</h1>
+    <h1>Hydrological modelling</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -381,10 +391,43 @@ const thebe_selector_output = ".output, .cell_output"
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-the-template-book">
-<span id="intro"></span><h1>Welcome to the Template Book<a class="headerlink" href="#welcome-to-the-template-book" title="Link to this heading">#</a></h1>
-<p><em>Write book intro here. This is the first page the student will see when opening the url.</em></p>
-<p>This book can be used as a template for other books. It includes a starter package of the software developed by the TeachBooks initiative.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="hydrological-modelling">
+<span id="intro"></span><h1>Hydrological modelling<a class="headerlink" href="#hydrological-modelling" title="Link to this heading">#</a></h1>
+<p>The exercises below on hydrological modelling are developed for the course “River Basin Hydrology and Water Management” tought at Delft University of Technology in the Environmental Engineering Master of Science (MSc) program. The course code at Delft is ENVM1502. When working on these exercises, it is assumed that the student is familiar with the following concepts:</p>
+<ul class="simple">
+<li><p>hydrology</p>
+<ul>
+<li><p>water balance</p></li>
+<li><p>river) catchment</p></li>
+<li><p>precipitation</p></li>
+<li><p>evaporation (actual evaporation and potential evaporation)</p></li>
+<li><p>(river) discharge, also known as streamflow.</p></li>
+</ul>
+</li>
+<li><p>mathematics</p>
+<ul>
+<li><p>first order differential equations</p></li>
+<li><p>analytical and numerically solving differential equations</p></li>
+</ul>
+</li>
+<li><p>programming</p>
+<ul>
+<li><p>python</p>
+<ul>
+<li><p>numpy</p></li>
+<li><p>pandas</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The material is split into three topics, and within each topic different exercises are offered. It is assumed that the exercises in previous topics have been completed before a student starts a new exercise.</p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -419,11 +462,11 @@ const thebe_selector_output = ".output, .cell_output"
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="some_content/overview.html"
+       href="1_modelling_intro_HBV/Exercise1.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Overview</p>
+        <p class="prev-next-title">Modelling exercise 1: Linear Reservoir</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -443,7 +486,7 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="footer-item">
     
 <p class="component-author">
-By TeachBooks Team, built with <a href="https://teachbooks.tudelft.nl/">TeachBooks</a> and <a href="https://jupyterbook.org/">Jupyter Book</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="license noopener noreferrer"">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt=""></a>
+By Teaching Material by Markus Hrachowitz (TU Delft). eWaterCycle platform by Rolf Hut (TU Delft), Bart Schilperoort (Netherlands eScience Center) and the bigger ewaterCycle team, including much work building the jupyter book by Anne Verslijen, Ahmed Farahat and Ezzat Qadriyeh. Jupyter book version uilt with <a href="https://teachbooks.tudelft.nl/">TeachBooks</a> and <a href="https://jupyterbook.org/">Jupyter Book</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="license noopener noreferrer"">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt=""></a>
 </p>
 
   </div>
