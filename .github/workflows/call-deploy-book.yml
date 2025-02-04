@@ -1,26 +1,78 @@
-name: call-deploy-book
+name: deploy-book
 
 on:
   push:
     branches:
-    - 'main'
-    - 'draft'
+      - main
+      - draft
+    paths:
+      - book/**
+      - requirements.txt
+      - .github/workflows/deploy.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-book:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build Jupyter Book
+        run: jupyter-book build book/
+
+      - name: Verify output files
+        run: ls -R book/_build/html/
+
+      - name: Deploy book
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: book/_build/html/
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+
+
+# TO BUILD JB TEACH BOOK TEMPLATE:
+
+  
+#name: call-deploy-book
+
+#on:
+#  push:
+#    branches:
+#    - 'main'
+#    - 'draft'
     # If your git repository has the Jupyter Book within some-subfolder next to
     # unrelated files, you can make this run only if a file within that specific
     # folder (or the workflow file itself) has been modified.
     #
-    paths:
-    - book/**
-    - requirements.txt
-    - .github/workflows/call-deploy-book.yml
-  workflow_dispatch:
+ #   paths:
+  #  - book/**
+   # - requirements.txt
+    #- .github/workflows/call-deploy-book.yml
+  #workflow_dispatch:
 
-jobs: 
-  call-workflow:
-    uses: TeachBooks/deploy-book-workflow/.github/workflows/deploy-book.yml@main
-    secrets: inherit
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
+#jobs: 
+ # call-workflow:
+  #  uses: TeachBooks/deploy-book-workflow/.github/workflows/deploy-book.yml@main
+   # secrets: inherit
+    #permissions:
+     # contents: read
+      #pages: write
+      #id-token: write
 
