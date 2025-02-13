@@ -38,7 +38,7 @@ class HBV_Bmi(Bmi):
             Requires atleast:
             ---------------------
             'precipitation_file': xarray with "pr" variable & time component
-            'potential_evaporation_file': xarray with "pev" variable of same nature as pr
+            'potential_evaporation_file': xarray with "evspsblpot" variable of same nature as pr
             'parameters': list of 8 parameters by a ','
             'initial_storage' list of 4 storage parameters split by a ','
 
