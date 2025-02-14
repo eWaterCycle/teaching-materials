@@ -3,7 +3,7 @@ The exercises below on hydrological modelling are developed for the course "Rive
 
 - hydrology
   - water balance
-  - river) catchment
+  - (river) catchment
   - precipitation
   - evaporation (actual evaporation and potential evaporation)
   - (river) discharge, also known as streamflow.
