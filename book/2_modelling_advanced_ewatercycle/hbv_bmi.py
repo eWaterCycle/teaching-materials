@@ -498,5 +498,5 @@ def load_var(ncfile: str | Path, varname: str) -> xr.DataArray:
     if "units" in data[varname].attrs:
         if data[varname].attrs['units'] == 'kg m-2 s-1':
             data[varname] = data[varname] * 24 * 3600 #mm/day
-            #data[varname].attrs['units'] = 'mm d-1' TODO, fix.
+            data[varname].attrs["units"] = "mm d-1"
     return data[varname]
