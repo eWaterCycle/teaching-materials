@@ -38,7 +38,7 @@ class HBV_Bmi(Bmi):
             Requires atleast:
             ---------------------
             'precipitation_file': xarray with "pr" variable & time component
-            'potential_evaporation_file': xarray with "pev" variable of same nature as pr
+            'potential_evaporation_file': xarray with "evspsblpot" variable of same nature as pr
             'parameters': list of 8 parameters by a ','
             'initial_storage' list of 4 storage parameters split by a ','
 
@@ -50,7 +50,7 @@ class HBV_Bmi(Bmi):
         self.P = load_var(self.config["precipitation_file"], "pr")
 
         # add Tas, Tmin and Tmax support for snow component ??!
-        self.EP = load_var(self.config["potential_evaporation_file"], "pev")
+        self.EP = load_var(self.config["potential_evaporation_file"], "evspsblpot")
 
         # set up times
         self.Ts = self.P['time'].astype("datetime64[s]")
@@ -498,5 +498,5 @@ def load_var(ncfile: str | Path, varname: str) -> xr.DataArray:
     if "units" in data[varname].attrs:
         if data[varname].attrs['units'] == 'kg m-2 s-1':
             data[varname] = data[varname] * 24 * 3600 #mm/day
-            #data[varname].attrs['units'] = 'mm d-1' TODO, fix.
+            data[varname].attrs["units"] = "mm d-1"
     return data[varname]
