@@ -1,6 +1,6 @@
 # first list the packages you wish to download from PyPI
 teachbooks # depends on jupyter-book
-jupyterbook-patches
+jupyterbook-patches==1.4.2
 sphinx-image-inverter
 download_link_replacer
 
