@@ -80,7 +80,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Exercise 1. Test your own HBV model on eWaterCycle" href="exercise1_build_test_HBV_eWaterCycle.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="February 21, 2025"/>
+    <meta name="docbuild:last-update" content="March 10, 2025"/>
   </head>
   
   
@@ -453,7 +453,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-2-generate-forcing-for-any-region-from-era5-for-hbv-model">
 <h1>Exercise 2. Generate forcing for any region from ERA5 for HBV model<a class="headerlink" href="#exercise-2-generate-forcing-for-any-region-from-era5-for-hbv-model" title="Link to this heading">#</a></h1>
-<p>In this exercise you will test you model again, but now based on forcing data which will be generated from ERA5. This notebook will execute the steps to generate forcing from ERA5 for the region you chose. For forcing generation we use the eWaterCycle generic forcing generator. This can generate forcing data with ESMValTool from ERA5 data (if available on your machine, which it is on the Surf Research Cloud that we are using), as well as CMIP6 data (which will be downloaded automatically). CMIP6 data will be discussed in a later notebook.</p>
+<p>In this exercise you will test you model again, but now based on forcing data which will be generated from ERA5. This notebook will execute the steps to generate forcing from ERA5 for the region you choose. For forcing generation we use the eWaterCycle generic forcing generator. This can generate forcing data with ESMValTool from ERA5 data (if available on your machine, which it is on the Surf Research Cloud that we are using), as well as CMIP6 data (which will be downloaded automatically). CMIP6 data will be discussed in a later notebook.</p>
 <p>You need to provide your own shapefile by uploading it to the “Forcing” directory, which you can find in the file browser on the left. For testing purposes, we have already uploaded a shapefile for the Rhine. Save the shapefile with a name indicating the region you chose, like we did for the Rhine.  Ensure that you upload all associated files required for the shapefile to function correctly. The necessary file extensions include <code class="docutils literal notranslate"><span class="pre">.dbf</span></code>, <code class="docutils literal notranslate"><span class="pre">.prj</span></code>, <code class="docutils literal notranslate"><span class="pre">.qpj</span></code>, <code class="docutils literal notranslate"><span class="pre">.shp</span></code> and <code class="docutils literal notranslate"><span class="pre">.shx</span></code>. Without these files, eWaterCycle will not be able to read the shapefile properly.</p>
 <p>We have seperated generating the forcing and running the model into two notebooks because generating the forcing is quite heavy on the hardware and we want to minimize the number of times you have to do that. After generating your forcing in this notebook, it will be saved so we can load it later without having to re-run it.</p>
 <div class="cell docutils container">
@@ -468,6 +468,7 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
 </pre></div>
 </div>
@@ -527,6 +528,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">The forcing object you created: 
+ <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>
+</pre>
+</div></div>
 </div>
 <p>The ERA5 forcing is converted to an xarray. Xarray is a Python package for working with labeled multi-dimensional arrays, it includes functions for advanced analytics and visualization. In this way, it is easier to plot the data.
 The forcing (precipitation and the potential evaporation) are plotted in the figure below.</p>
@@ -631,7 +637,7 @@ By Teaching Material by Markus Hrachowitz (TU Delft). eWaterCycle platform by Ro
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on February 21, 2025.
+  Last updated on March 10, 2025.
   <br/>
 </p>
   </div>

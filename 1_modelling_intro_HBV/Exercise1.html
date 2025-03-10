@@ -82,7 +82,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Hydrological modelling" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="February 21, 2025"/>
+    <meta name="docbuild:last-update" content="March 10, 2025"/>
   </head>
   
   
@@ -454,6 +454,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-reservoir-without-external-drivers">1. Linear Reservoir without External Drivers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
 </ul>
 </li>
@@ -560,10 +561,13 @@ S(t + \Delta t) = F(S(t))
 <div class="math notranslate nohighlight">
 \[
 \begin{equation}
-S(t + \Delta t) = S(t) + - k \Delta t k S(t) ^\alpha
+S(t + \Delta t) = S(t) + - k \Delta t  S(t) ^\alpha
 \end{equation}
 \]</div>
 <p>Hence, if <span class="math notranslate nohighlight">\( S(t) \)</span> is known, <span class="math notranslate nohighlight">\( S(t + \Delta t) \)</span> can be calculated in one iteration. The big assumption in the forward Euler model is that <span class="math notranslate nohighlight">\( S\left(t\right) \)</span> is relatively constant during the timestep. This may not always be true. If <span class="math notranslate nohighlight">\(S\left(t\right)\)</span> changes fast smaller timesteps need to be used to not make too big of an error. Other, more complicated methods to numerically solve differential equations exist such as Runga-Kutta. See the material of the MUDE course for more information on those. In hydrology it is always important to weigh if the error introduced by your numerical scheme is significant compared to the error introduced by the fact that the model is not perfect to begin with.</p>
+</section>
+<section id="part-2">
+<h3>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h3>
 <p>Write the functions in the code cells below to calculate the analytical and numerical solution of the linear reservoir problem without external drivers. Return for both the storage array <code class="docutils literal notranslate"><span class="pre">S</span></code>and the time array <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p>
 <p>The following (starting) values can be used; during the exercise, you can change <span class="math notranslate nohighlight">\( k \)</span> and <span class="math notranslate nohighlight">\( t_{max} \)</span>:</p>
 <ul class="simple">
@@ -582,11 +586,11 @@ S(t + \Delta t) = S(t) + - k \Delta t k S(t) ^\alpha
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S0</span> <span class="o">=</span> <span class="mi">75</span> <span class="c1">#mm</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1">#per day</span>
-<span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#days</span>
-<span class="n">tmax</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1">#days</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#days</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S0</span> <span class="o">=</span> <span class="mi">75</span>  <span class="c1"># mm</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># per day</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># days</span>
+<span class="n">tmax</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># days</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># days</span>
 <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span> 
 </pre></div>
 </div>
@@ -702,6 +706,7 @@ In the last part of this exercise, you will conside external drivers. This water
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-reservoir-without-external-drivers">1. Linear Reservoir without External Drivers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
 </ul>
 </li>
@@ -736,7 +741,7 @@ By Teaching Material by Markus Hrachowitz (TU Delft). eWaterCycle platform by Ro
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on February 21, 2025.
+  Last updated on March 10, 2025.
   <br/>
 </p>
   </div>

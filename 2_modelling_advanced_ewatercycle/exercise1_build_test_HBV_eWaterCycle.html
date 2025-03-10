@@ -80,7 +80,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Models Exercise 2: Lumped Conceptual Model" href="../1_modelling_intro_HBV/Exercise2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="February 21, 2025"/>
+    <meta name="docbuild:last-update" content="March 10, 2025"/>
   </head>
   
   
@@ -508,7 +508,7 @@ Anytime you edit the code in <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 </div>
-<p>In this exercise we are using the same forcing data as you used in the earlier exercise. eWaterCycle works with forcing objetcs that contain all the information needed. It is important to set the paths to these files, so Python can find them:</p>
+<p>In this exercise we are using the same forcing data as you used in the earlier exercise. eWaterCycle works with forcing objects that contain all the information needed. It is important to set the paths to these files, so Python can find them:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
@@ -588,6 +588,38 @@ Anytime you edit the code in <code class="docutils literal notranslate"><span cl
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #800080; text-decoration-color: #800080; font-weight: bold">HBVForcing</span><span style="font-weight: bold">(</span>
+    <span style="color: #808000; text-decoration-color: #808000">start_time</span>=<span style="color: #008000; text-decoration-color: #008000">'1997-08-01T00:00:00Z'</span>,
+    <span style="color: #808000; text-decoration-color: #808000">end_time</span>=<span style="color: #008000; text-decoration-color: #008000">'2000-08-31T00:00:00Z'</span>,
+    <span style="color: #808000; text-decoration-color: #808000">directory</span>=<span style="color: #800080; text-decoration-color: #800080; font-weight: bold">PosixPath</span><span style="font-weight: bold">(</span><span style="color: #008000; text-decoration-color: #008000">'/home/aversleije/repos/teaching-materials/teaching-files/ENVM1502/source/ps1/Forcing'</span><span style="font-weight: bold">)</span>,
+    <span style="color: #808000; text-decoration-color: #808000">shape</span>=<span style="color: #800080; text-decoration-color: #800080; font-style: italic">None</span>,
+    <span style="color: #808000; text-decoration-color: #808000">filenames</span>=<span style="font-weight: bold">{}</span>,
+    <span style="color: #808000; text-decoration-color: #808000">camels_file</span>=<span style="color: #008000; text-decoration-color: #008000">'Forcing.txt'</span>,
+    <span style="color: #808000; text-decoration-color: #808000">pr</span>=<span style="color: #008000; text-decoration-color: #008000">'HBV_forcing_test_2024-06-14 14_19.nc'</span>,
+    <span style="color: #808000; text-decoration-color: #808000">evspsblpot</span>=<span style="color: #008000; text-decoration-color: #008000">'HBV_forcing_test_2024-06-14 14_19.nc'</span>,
+    <span style="color: #808000; text-decoration-color: #808000">alpha</span>=<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1.26</span>,
+    <span style="color: #808000; text-decoration-color: #808000">test_data_bool</span>=<span style="color: #00ff00; text-decoration-color: #00ff00; font-style: italic">True</span>
+<span style="font-weight: bold">)</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #800080; text-decoration-color: #800080; font-weight: bold">HBV</span><span style="font-weight: bold">(</span>
+    <span style="color: #808000; text-decoration-color: #808000">parameter_set</span>=<span style="color: #800080; text-decoration-color: #800080; font-style: italic">None</span>,
+    <span style="color: #808000; text-decoration-color: #808000">forcing</span>=<span style="color: #800080; text-decoration-color: #800080; font-weight: bold">HBVForcing</span><span style="font-weight: bold">(</span>
+        <span style="color: #808000; text-decoration-color: #808000">start_time</span>=<span style="color: #008000; text-decoration-color: #008000">'1997-08-01T00:00:00Z'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">end_time</span>=<span style="color: #008000; text-decoration-color: #008000">'2000-08-31T00:00:00Z'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">directory</span>=<span style="color: #800080; text-decoration-color: #800080; font-weight: bold">PosixPath</span><span style="font-weight: bold">(</span><span style="color: #008000; text-decoration-color: #008000">'/home/aversleije/repos/teaching-materials/teaching-files/ENVM1502/source/ps1/Forcing'</span><span style="font-weight: bold">)</span>
+,
+        <span style="color: #808000; text-decoration-color: #808000">shape</span>=<span style="color: #800080; text-decoration-color: #800080; font-style: italic">None</span>,
+        <span style="color: #808000; text-decoration-color: #808000">filenames</span>=<span style="font-weight: bold">{}</span>,
+        <span style="color: #808000; text-decoration-color: #808000">camels_file</span>=<span style="color: #008000; text-decoration-color: #008000">'Forcing.txt'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">pr</span>=<span style="color: #008000; text-decoration-color: #008000">'HBV_forcing_test_2024-06-14 14_19.nc'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">evspsblpot</span>=<span style="color: #008000; text-decoration-color: #008000">'HBV_forcing_test_2024-06-14 14_19.nc'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">alpha</span>=<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1.26</span>,
+        <span style="color: #808000; text-decoration-color: #808000">test_data_bool</span>=<span style="color: #00ff00; text-decoration-color: #00ff00; font-style: italic">True</span>
+    <span style="font-weight: bold">)</span>
+<span style="font-weight: bold">)</span>
+</pre>
+</div></div>
 </div>
 </section>
 <section id="run-the-model">
@@ -888,7 +920,7 @@ By Teaching Material by Markus Hrachowitz (TU Delft). eWaterCycle platform by Ro
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on February 21, 2025.
+  Last updated on March 10, 2025.
   <br/>
 </p>
   </div>
