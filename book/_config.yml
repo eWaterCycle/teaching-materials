@@ -9,7 +9,7 @@ only_build_toc_files: true
 
 html:
   favicon : "figures/TB_favicon.ico"
-  baseurl :  "https://github.com/eWaterCycle/teaching-materials" 
+  baseurl :  "https://github.com/eWaterCycle/teaching-materials/" 
   
 sphinx:
   config:
