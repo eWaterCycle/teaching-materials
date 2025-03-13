@@ -18,7 +18,7 @@ For questions about the course please email:
 4. etc?
 
 Techinical questions about this repo and if things do not work:
-Mark Melotto: m.melotto@tudelft.nl
+- Mark Melotto: m.melotto@tudelft.nl
 
 The course can be found in the folder `book`, this is where you will find the following structure:
 
