@@ -55,12 +55,12 @@ def interactive_plot(model, forcing, params):
 
     # Create sliders with the specified min and max values
     sliders = {
-        'I_max': FloatSlider(min=params['I_max']['min'], max=params['I_max']['max'], step=0.1, value=Imax),
+        'I_max': FloatSlider(min=params['I_max']['min'], max=params['I_max']['max'], step=0.1, value=I_max),
         'Ce': FloatSlider(min=params['Ce']['min'], max=params['Ce']['max'], step=0.01, value=Ce),
-        'Su_max': FloatSlider(min=params['Su_max']['min'], max=params['Su_max']['max'], step=1, value=Sumax),
+        'Su_max': FloatSlider(min=params['Su_max']['min'], max=params['Su_max']['max'], step=1, value=Su_max),
         'beta': FloatSlider(min=params['beta']['min'], max=params['beta']['max'], step=0.1, value=beta),
-        'P_max': FloatSlider(min=params['P_max']['min'], max=params['P_max']['max'], step=0.001, value=Pmax),
-        'T_lag': IntSlider(min=params['T_lag']['min'], max=params['T_lag']['max'], step=1, value=Tlag),
+        'P_max': FloatSlider(min=params['P_max']['min'], max=params['P_max']['max'], step=0.001, value=P_max),
+        'T_lag': IntSlider(min=params['T_lag']['min'], max=params['T_lag']['max'], step=1, value=T_lag),
         'Kf': FloatSlider(min=params['Kf']['min'], max=params['Kf']['max'], step=0.01, value=Kf),
         'Ks': FloatSlider(min=params['Ks']['min'], max=params['Ks']['max'], step=0.0001, value=Ks, readout_format='.3f')
     }
@@ -80,12 +80,12 @@ def interactive_plot(model, forcing, params):
         out.clear_output(wait=True)
         with out:
             plot_hydrograph(
-                Imax=sliders['I_max'].value, 
+                I_max=sliders['I_max'].value, 
                 Ce=sliders['Ce'].value, 
-                Sumax=sliders['Su_max'].value, 
+                Su_max=sliders['Su_max'].value, 
                 beta=sliders['beta'].value, 
-                Pmax=sliders['P_max'].value, 
-                Tlag=sliders['T_lag'].value, 
+                P_max=sliders['P_max'].value, 
+                T_lag=sliders['T_lag'].value, 
                 Kf=sliders['Kf'].value, 
                 Ks=sliders['Ks'].value,
                 model=model, 
@@ -113,12 +113,12 @@ def interactive_plot(model, forcing, params):
         initial_run = False
         with out:
             plot_hydrograph(
-                Imax=sliders['I_max'].value, 
+                I_max=sliders['I_max'].value, 
                 Ce=sliders['Ce'].value, 
-                Sumax=sliders['Su_max'].value, 
+                Su_max=sliders['Su_max'].value, 
                 beta=sliders['beta'].value, 
-                Pmax=sliders['P_max'].value, 
-                Tlag=sliders['T_lag'].value, 
+                P_max=sliders['P_max'].value, 
+                T_lag=sliders['T_lag'].value, 
                 Kf=sliders['Kf'].value, 
                 Ks=sliders['Ks'].value,
                 model=model, 
