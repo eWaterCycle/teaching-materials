@@ -7,9 +7,9 @@ from ipywidgets import interact, FloatSlider, IntSlider, fixed, VBox, interactiv
 param_change_counter = 0  
 initial_run = True
 
-def plot_hydrograph(Imax, Ce, Sumax, beta, Pmax, Tlag, Kf, Ks, model, forcing):
+def plot_hydrograph(I_max, Ce, Su_max, beta, P_max, T_lag, Kf, Ks, model, forcing):
     Sin = np.array([0,  100,  0,  5  ])
-    Par = np.array([Imax, Ce, Sumax, beta, Pmax, Tlag, Kf, Ks])
+    Par = np.array([I_max, Ce, Su_max, beta, P_max, T_lag, Kf, Ks])
     Qm = model(Par, forcing, Sin, hydrograph='FALSE')
 
     # Calculate NSE
@@ -44,23 +44,23 @@ def interactive_plot(model, forcing, params):
     # Update recalculating status
     
     # Calculate average parameter values
-    Imax = (params['Imax']['min'] + params['Imax']['max']) / 2
+    I_max = (params['I_max']['min'] + params['I_max']['max']) / 2
     Ce = (params['Ce']['min'] + params['Ce']['max']) / 2
-    Sumax = (params['Sumax']['min'] + params['Sumax']['max']) / 2 
+    Su_max = (params['Su_max']['min'] + params['Su_max']['max']) / 2 
     beta = (params['beta']['min'] + params['beta']['max']) / 2
-    Pmax = (params['Pmax']['min'] + params['Pmax']['max']) / 2
-    Tlag = (params['Tlag']['min'] + params['Tlag']['max']) / 2
+    P_max = (params['P_max']['min'] + params['P_max']['max']) / 2
+    T_lag = (params['T_lag']['min'] + params['T_lag']['max']) / 2
     Kf = (params['Kf']['min'] + params['Kf']['max']) / 2
     Ks = (params['Ks']['min'] + params['Ks']['max']) / 2
 
     # Create sliders with the specified min and max values
     sliders = {
-        'Imax': FloatSlider(min=params['Imax']['min'], max=params['Imax']['max'], step=0.1, value=Imax),
+        'I_max': FloatSlider(min=params['I_max']['min'], max=params['I_max']['max'], step=0.1, value=Imax),
         'Ce': FloatSlider(min=params['Ce']['min'], max=params['Ce']['max'], step=0.01, value=Ce),
-        'Sumax': FloatSlider(min=params['Sumax']['min'], max=params['Sumax']['max'], step=1, value=Sumax),
+        'Su_max': FloatSlider(min=params['Su_max']['min'], max=params['Su_max']['max'], step=1, value=Sumax),
         'beta': FloatSlider(min=params['beta']['min'], max=params['beta']['max'], step=0.1, value=beta),
-        'Pmax': FloatSlider(min=params['Pmax']['min'], max=params['Pmax']['max'], step=0.001, value=Pmax),
-        'Tlag': IntSlider(min=params['Tlag']['min'], max=params['Tlag']['max'], step=1, value=Tlag),
+        'P_max': FloatSlider(min=params['P_max']['min'], max=params['P_max']['max'], step=0.001, value=Pmax),
+        'T_lag': IntSlider(min=params['T_lag']['min'], max=params['T_lag']['max'], step=1, value=Tlag),
         'Kf': FloatSlider(min=params['Kf']['min'], max=params['Kf']['max'], step=0.01, value=Kf),
         'Ks': FloatSlider(min=params['Ks']['min'], max=params['Ks']['max'], step=0.0001, value=Ks, readout_format='.3f')
     }
@@ -80,12 +80,12 @@ def interactive_plot(model, forcing, params):
         out.clear_output(wait=True)
         with out:
             plot_hydrograph(
-                Imax=sliders['Imax'].value, 
+                Imax=sliders['I_max'].value, 
                 Ce=sliders['Ce'].value, 
-                Sumax=sliders['Sumax'].value, 
+                Sumax=sliders['Su_max'].value, 
                 beta=sliders['beta'].value, 
-                Pmax=sliders['Pmax'].value, 
-                Tlag=sliders['Tlag'].value, 
+                Pmax=sliders['P_max'].value, 
+                Tlag=sliders['T_lag'].value, 
                 Kf=sliders['Kf'].value, 
                 Ks=sliders['Ks'].value,
                 model=model, 
@@ -113,12 +113,12 @@ def interactive_plot(model, forcing, params):
         initial_run = False
         with out:
             plot_hydrograph(
-                Imax=sliders['Imax'].value, 
+                Imax=sliders['I_max'].value, 
                 Ce=sliders['Ce'].value, 
-                Sumax=sliders['Sumax'].value, 
+                Sumax=sliders['Su_max'].value, 
                 beta=sliders['beta'].value, 
-                Pmax=sliders['Pmax'].value, 
-                Tlag=sliders['Tlag'].value, 
+                Pmax=sliders['P_max'].value, 
+                Tlag=sliders['T_lag'].value, 
                 Kf=sliders['Kf'].value, 
                 Ks=sliders['Ks'].value,
                 model=model, 
