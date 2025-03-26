@@ -16,6 +16,8 @@ parts:
   - caption: advanced FlexTopo
     chapters:
     - file: 3_modelling_advanced_flextopo/exercise6_flextopo.ipynb
+    - file: 3_modelling_advanced_flextopo/exercise/real_exercise6_flextopo.ipynb
+
   - caption: additional info
     chapters:
     - file: references.md
