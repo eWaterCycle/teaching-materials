@@ -1,7 +1,7 @@
 import numpy as np
 from Weigfun import Weigfun
 
-def plateau(timestep, Par, forcing, Fluxes, States):
+def plateau_func(timestep, Par, forcing, Fluxes, States):
 	# HBVpareto Calculates values of 3 objective functions for HBV model
 
 	Imax = Par[0]
