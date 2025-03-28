@@ -1,7 +1,9 @@
 # Welcome to ENVM1502
 
-This repository is used for the course ENVM1502 at the Technical University of Delft.
-Making use of [eWaterCycle](https://ewatercycle.readthedocs.io/en/latest/index.html) students will learn how to implement their own HBV models.
+This is a [teachbook](http://www.ewatercycle.org/teaching-materials/main), the intended way to experience this repo is through this website.
+This teachbook makes use of interactive elements. The elements in chapters 1 and 3 will run in the browser using [the online version](http://www.ewatercycle.org/teaching-materials/main). 
+The elements in chapter 2 need to executed on a jupyterhub that is running on a machine that support the ewatercycle platform. See [details](https://ewatercycle.readthedocs.io/en/latest/index.html). 
+The "jupyterhub" button points to a server that is only accessable to students of ENVM1502 at the Technical University of Delft. If you want to set up your own server for your own class, contact us at question@ewatercycle.org
 
 In the first chapter we will cover how to make a HBV model.
 In chapter two we will take you through your own HBV implementation and how to calibrate and use generate CMIP data for HBV.
@@ -10,15 +12,6 @@ Chapter three explains to concept of flextopo.
 This repository works on an [eWaterCycle machine](https://envm1502.ewatercycle-tud.src.surf-hosted.nl/) but uses a local version of the HBV model. 
 This is done so that it does not open a relatively high cost container per model run.
 Use the [eWaterCycle machine](https://envm1502.ewatercycle-tud.src.surf-hosted.nl/) to log in using your username/groupname and password.
-
-For questions about the course please email:
-1. Markus Hrachowitz: m.hrachowitz@tudelft.nl
-2. Nick van de Giesen: n.c.vandegiesen@tudelft.nl
-3. Rolf Hut: r.w.hut@tudelft.nl
-4. etc?
-
-Techinical questions about this repo and if things do not work:
-- Mark Melotto: m.melotto@tudelft.nl
 
 The course can be found in the folder `book`, this is where you will find the following structure:
 
