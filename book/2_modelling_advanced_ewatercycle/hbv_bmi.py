@@ -149,6 +149,12 @@ class HBV_Bmi(Bmi):
                 # Advance the model time by one step
                 self.current_timestep += 1
 
+###############################################################################    
+
+    "End of the update function!"
+
+############################################################################### 
+
     def set_pars(self, par) -> None:
         self.I_max  = par[0]                # maximum interception
         self.Ce     = par[1]                # Ea = Su / (sumax * Ce) * Ep
