@@ -4,11 +4,14 @@ import numpy as np
 import plotly.graph_objs as go
 from ipywidgets import FloatSlider, IntSlider, VBox, HTML, HBox, Label, Output
 
-# Initialize global counter
+# Global counters
 param_change_counter = 0
 initial_run = True
 
 def plot_hydrograph(I_max, Ce, Su_max, beta, P_max, T_lag, Kf, Ks, model, forcing):
+    """
+    Calculates simulated hydrograph and NSE, then plots using Plotly.
+    """
     Sin = np.array([0, 100, 0, 5])
     Par = np.array([I_max, Ce, Su_max, beta, P_max, T_lag, Kf, Ks])
     Qm = model(Par, forcing, Sin, hydrograph='FALSE')
@@ -36,12 +39,17 @@ def plot_hydrograph(I_max, Ce, Su_max, beta, P_max, T_lag, Kf, Ks, model, forcin
     )
     fig.show()
 
+
 def interactive_plot(model, forcing, params):
+    """
+    Creates an interactive HBV plot using sliders and Plotly (browser-safe).
+    """
     global param_change_counter, initial_run
 
     recalculating_label = HTML(value="")
+    out = Output()
 
-    # Calculate initial parameter values
+    # Initial parameter values
     I_max = (params['I_max']['min'] + params['I_max']['max']) / 2
     Ce = (params['Ce']['min'] + params['Ce']['max']) / 2
     Su_max = (params['Su_max']['min'] + params['Su_max']['max']) / 2
@@ -51,7 +59,7 @@ def interactive_plot(model, forcing, params):
     Kf = (params['Kf']['min'] + params['Kf']['max']) / 2
     Ks = (params['Ks']['min'] + params['Ks']['max']) / 2
 
-    # Create sliders
+    # Sliders
     sliders = {
         'I_max': FloatSlider(min=params['I_max']['min'], max=params['I_max']['max'], step=0.1, value=I_max),
         'Ce': FloatSlider(min=params['Ce']['min'], max=params['Ce']['max'], step=0.01, value=Ce),
@@ -69,17 +77,13 @@ def interactive_plot(model, forcing, params):
         for name, slider in sliders.items()
     ]
 
-    # Output widget
-    out = Output()
-
-    # Function called when sliders change
+    # Update function
     def update_counter(change):
         global param_change_counter, initial_run
         if not initial_run:
             param_change_counter += 1
 
         recalculating_label.value = "<b>Loading...</b>"
-
         out.clear_output(wait=True)
         with out:
             plot_hydrograph(
@@ -94,10 +98,9 @@ def interactive_plot(model, forcing, params):
                 model=model,
                 forcing=forcing
             )
-
         recalculating_label.value = "<b>Recalculation Complete</b>"
 
-    # Attach observer to all sliders
+    # Attach observers
     for slider in sliders.values():
         slider.observe(update_counter, names='value')
 
