@@ -1,14 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from ipywidgets import interact, FloatSlider, IntSlider, fixed, VBox, interactive_output, HTML, Button, HBox, Label
-
+from ipywidgets import FloatSlider, IntSlider, VBox, HTML, HBox, Label, Output
 
 # Initialize the global counter
 param_change_counter = 0  
 initial_run = True
 
 def plot_hydrograph(I_max, Ce, Su_max, beta, P_max, T_lag, Kf, Ks, model, forcing):
-    Sin = np.array([0,  100,  0,  5  ])
+    Sin = np.array([0, 100, 0, 5])
     Par = np.array([I_max, Ce, Su_max, beta, P_max, T_lag, Kf, Ks])
     Qm = model(Par, forcing, Sin, hydrograph='FALSE')
 
@@ -24,7 +23,6 @@ def plot_hydrograph(I_max, Ce, Su_max, beta, P_max, T_lag, Kf, Ks, model, forcin
     plt.figure(figsize=(10, 5))
     plt.plot(forcing.index, forcing['Q'], label='Observed Q')
     plt.plot(forcing.index, Qm, label='Simulated Q')
-
     plt.xlabel('Date')
     plt.ylabel('Flow')
     plt.title(f'Hydrograph - NSE = {Obj:.2f}')
@@ -32,18 +30,13 @@ def plot_hydrograph(I_max, Ce, Su_max, beta, P_max, T_lag, Kf, Ks, model, forcin
     plt.grid(True)
     plt.show()
 
+
 def interactive_plot(model, forcing, params):
     global param_change_counter, initial_run
 
-    # Create a display widget to show the counter
-    #counter_display = HTML(value=f"<b>Parameter Changes: {param_change_counter}</b>")
-    # Create a label to show recalculation status
-    # recalculating_label = Label(value="")
     recalculating_label = HTML(value="")
-    
-    # Update recalculating status
-    
-    # Calculate average parameter values
+
+    # Calculate initial parameter values
     I_max = (params['I_max']['min'] + params['I_max']['max']) / 2
     Ce = (params['Ce']['min'] + params['Ce']['max']) / 2
     Su_max = (params['Su_max']['min'] + params['Su_max']['max']) / 2 
@@ -53,7 +46,7 @@ def interactive_plot(model, forcing, params):
     Kf = (params['Kf']['min'] + params['Kf']['max']) / 2
     Ks = (params['Ks']['min'] + params['Ks']['max']) / 2
 
-    # Create sliders with the specified min and max values
+    # Create sliders
     sliders = {
         'I_max': FloatSlider(min=params['I_max']['min'], max=params['I_max']['max'], step=0.1, value=I_max),
         'Ce': FloatSlider(min=params['Ce']['min'], max=params['Ce']['max'], step=0.01, value=Ce),
@@ -65,17 +58,22 @@ def interactive_plot(model, forcing, params):
         'Ks': FloatSlider(min=params['Ks']['min'], max=params['Ks']['max'], step=0.0001, value=Ks, readout_format='.3f')
     }
 
-    # Combine sliders with their labels, and align them to the left
-    slider_widgets = [HBox([Label(value=name, layout={'width': '150px'}), slider], layout={'align_items': 'flex-start'}) 
-                      for name, slider in sliders.items()]
+    # Combine sliders with labels
+    slider_widgets = [
+        HBox([Label(value=name, layout={'width': '150px'}), slider], layout={'align_items': 'flex-start'})
+        for name, slider in sliders.items()
+    ]
 
+    # Create Output widget
+    out = Output()
+
+    # Function called when sliders change
     def update_counter(change):
         global param_change_counter, initial_run
         if not initial_run:
             param_change_counter += 1
-            #counter_display.value = f"<b>Parameter Changes: {param_change_counter}</b>"
-            
-        recalculating_label.value = "<b>Loading....</b>"
+
+        recalculating_label.value = "<b>Loading...</b>"
 
         out.clear_output(wait=True)
         with out:
@@ -91,24 +89,17 @@ def interactive_plot(model, forcing, params):
                 model=model, 
                 forcing=forcing
             )
-    
-        # Update recalculation status after completion
         recalculating_label.value = "<b>Recalculation Complete</b>"
-    
-    
-    # Attach the change handler to each slider
+
+    # Attach observer to all sliders
     for slider in sliders.values():
         slider.observe(update_counter, names='value')
 
-    
-    # Create the interactive plot
-    ui = VBox([recalculating_label] + slider_widgets) #+ list(sliders.values()))
-    out = interactive_output(lambda **kwargs: None, {})  # Empty output placeholder
-
+    # Display UI
+    ui = VBox([recalculating_label] + slider_widgets)
     display(ui, out)
-    # display(ui)
 
-    # Plot the first time without incrementing the counter
+    # Initial plot
     if initial_run:
         out.clear_output(wait=True)
         initial_run = False
@@ -125,4 +116,3 @@ def interactive_plot(model, forcing, params):
                 model=model, 
                 forcing=forcing
             )
-        
