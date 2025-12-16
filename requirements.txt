@@ -6,5 +6,3 @@ download_link_replacer
 
 # now list the packages (and the respective url) you wish to download from the GitLab package registry
 git+https://github.com/TeachBooks/Sphinx-Thebe
-plotly
-nbformat

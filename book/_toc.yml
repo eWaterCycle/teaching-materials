@@ -5,7 +5,7 @@ parts:
   - caption: Lumped Models
     chapters:
     - file: 1_modelling_intro_HBV/Exercise1.ipynb
-    - file: 1_modelling_intro_HBV/Exercise2.ipynb
+    - file: 1_modelling_intro_HBV/Exercise2-Canada.ipynb
   - caption: eWaterCycle platform
     chapters:
     - file: 2_modelling_advanced_ewatercycle/exercise1_build_test_HBV_eWaterCycle.ipynb
