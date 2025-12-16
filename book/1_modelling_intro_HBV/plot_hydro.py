@@ -1,9 +1,11 @@
+'''This is a temporary fix for the inbrowser interactive plot not working!!'''
+
 import numpy as np
-import matplotlib.pyplot as plt
+import plotly.graph_objs as go
 from ipywidgets import FloatSlider, IntSlider, VBox, HTML, HBox, Label, Output
 
-# Initialize the global counter
-param_change_counter = 0  
+# Initialize global counter
+param_change_counter = 0
 initial_run = True
 
 def plot_hydrograph(I_max, Ce, Su_max, beta, P_max, T_lag, Kf, Ks, model, forcing):
@@ -19,17 +21,20 @@ def plot_hydrograph(I_max, Ce, Su_max, beta, P_max, T_lag, Kf, Ks, model, forcin
     ErrDo = np.sum((Qo[ind] - QoAv) ** 2)
     Obj = 1 - (ErrUp / ErrDo)
 
-    # Plot hydrograph
-    plt.figure(figsize=(10, 5))
-    plt.plot(forcing.index, forcing['Q'], label='Observed Q')
-    plt.plot(forcing.index, Qm, label='Simulated Q')
-    plt.xlabel('Date')
-    plt.ylabel('Flow')
-    plt.title(f'Hydrograph - NSE = {Obj:.2f}')
-    plt.legend()
-    plt.grid(True)
-    plt.show()
+    # Plotly figure
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=forcing.index, y=forcing['Q'], mode='lines', name='Observed Q'))
+    fig.add_trace(go.Scatter(x=forcing.index, y=Qm, mode='lines', name='Simulated Q'))
 
+    fig.update_layout(
+        title=f'Hydrograph - NSE = {Obj:.2f}',
+        xaxis_title='Date',
+        yaxis_title='Flow',
+        template='plotly_white',
+        width=900,
+        height=500
+    )
+    fig.show()
 
 def interactive_plot(model, forcing, params):
     global param_change_counter, initial_run
@@ -39,7 +44,7 @@ def interactive_plot(model, forcing, params):
     # Calculate initial parameter values
     I_max = (params['I_max']['min'] + params['I_max']['max']) / 2
     Ce = (params['Ce']['min'] + params['Ce']['max']) / 2
-    Su_max = (params['Su_max']['min'] + params['Su_max']['max']) / 2 
+    Su_max = (params['Su_max']['min'] + params['Su_max']['max']) / 2
     beta = (params['beta']['min'] + params['beta']['max']) / 2
     P_max = (params['P_max']['min'] + params['P_max']['max']) / 2
     T_lag = (params['T_lag']['min'] + params['T_lag']['max']) / 2
@@ -64,7 +69,7 @@ def interactive_plot(model, forcing, params):
         for name, slider in sliders.items()
     ]
 
-    # Create Output widget
+    # Output widget
     out = Output()
 
     # Function called when sliders change
@@ -78,17 +83,18 @@ def interactive_plot(model, forcing, params):
         out.clear_output(wait=True)
         with out:
             plot_hydrograph(
-                I_max=sliders['I_max'].value, 
-                Ce=sliders['Ce'].value, 
-                Su_max=sliders['Su_max'].value, 
-                beta=sliders['beta'].value, 
-                P_max=sliders['P_max'].value, 
-                T_lag=sliders['T_lag'].value, 
-                Kf=sliders['Kf'].value, 
+                I_max=sliders['I_max'].value,
+                Ce=sliders['Ce'].value,
+                Su_max=sliders['Su_max'].value,
+                beta=sliders['beta'].value,
+                P_max=sliders['P_max'].value,
+                T_lag=sliders['T_lag'].value,
+                Kf=sliders['Kf'].value,
                 Ks=sliders['Ks'].value,
-                model=model, 
+                model=model,
                 forcing=forcing
             )
+
         recalculating_label.value = "<b>Recalculation Complete</b>"
 
     # Attach observer to all sliders
@@ -105,14 +111,14 @@ def interactive_plot(model, forcing, params):
         initial_run = False
         with out:
             plot_hydrograph(
-                I_max=sliders['I_max'].value, 
-                Ce=sliders['Ce'].value, 
-                Su_max=sliders['Su_max'].value, 
-                beta=sliders['beta'].value, 
-                P_max=sliders['P_max'].value, 
-                T_lag=sliders['T_lag'].value, 
-                Kf=sliders['Kf'].value, 
+                I_max=sliders['I_max'].value,
+                Ce=sliders['Ce'].value,
+                Su_max=sliders['Su_max'].value,
+                beta=sliders['beta'].value,
+                P_max=sliders['P_max'].value,
+                T_lag=sliders['T_lag'].value,
+                Kf=sliders['Kf'].value,
                 Ks=sliders['Ks'].value,
-                model=model, 
+                model=model,
                 forcing=forcing
             )

@@ -10,3 +10,4 @@ sphinx-thebe ~= 0.9.9
 matplotlib==3.8.*
 matplotlib-inline>=0.1.7
 ipywidgets>=8.0
+plotly
