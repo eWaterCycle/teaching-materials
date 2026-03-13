@@ -9,9 +9,9 @@ In the first chapter we will cover how to make a HBV model.
 In chapter two we will take you through your own HBV implementation and how to calibrate and use generate CMIP data for HBV.
 Chapter three explains to concept of flextopo.
 
-This repository works on an [eWaterCycle machine](https://envm1502.ewatercycle-tud.src.surf-hosted.nl/) but uses a local version of the HBV model. 
+This repository works on an [eWaterCycle machine](https://ewatercycleenvm.ewatercycle-tud.src.surf-hosted.nl) but uses a local version of the HBV model. 
 This is done so that it does not open a relatively high cost container per model run.
-Use the [eWaterCycle machine](https://envm1502.ewatercycle-tud.src.surf-hosted.nl/) to log in using your username/groupname and password.
+Use the [eWaterCycle machine](https://ewatercycleenvm.ewatercycle-tud.src.surf-hosted.nl) to log in using your username/groupname and password.
 
 For questions about the course please email:
  1. Markus Hrachowitz: m.hrachowitz@tudelft.nl
@@ -48,5 +48,5 @@ Calibrate your own HBV region model and compare it to observations.
 ### Exercise 5: Generate forcing for any region from CMIP6 for HBV model
 We will learn to generate CMIP6 forcing for your research question.
 
-## Chapter 3: modelling flextopo
+## Chapter 3: Modelling flextopo
 Here we will look into modelling/calibrating different parts of your region (hillslopes, plateaus, wetlands and basins).
