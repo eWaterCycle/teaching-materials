@@ -1,0 +1,6 @@
+{
+    "precipitation_file": "/home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/manning_Forcing/OBS6_ERA5_reanaly_1_day_pr_2010-2012.nc",
+    "potential_evaporation_file": "/home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/manning_Forcing/Derived_Makkink_evspsblpot.nc",
+    "parameters": "2.0449124448066804,0.6367965131730898,738.1308922282241,1.6684961881907054,0.10488654408546254,2.0501039111785238,0.06398753963653539,0.003153565854426907",
+    "initial_storage": "2,390,80,39"
+}
