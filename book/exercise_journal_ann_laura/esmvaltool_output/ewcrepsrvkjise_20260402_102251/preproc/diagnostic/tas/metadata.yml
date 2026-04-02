@@ -1,0 +1,23 @@
+? /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepsrvkjise_20260402_102251/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2010-2011.nc
+: alias: ERA5
+  dataset: ERA5
+  diagnostic: diagnostic
+  end_year: 2011
+  filename: /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepsrvkjise_20260402_102251/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2010-2011.nc
+  frequency: day
+  long_name: Near-Surface Air Temperature
+  mip: day
+  modeling_realm:
+  - atmos
+  preprocessor: tas
+  project: OBS6
+  recipe_dataset_index: 0
+  short_name: tas
+  standard_name: air_temperature
+  start_year: 2010
+  tier: 3
+  timerange: 2010/2011
+  type: reanaly
+  units: K
+  variable_group: tas
+  version: 1
