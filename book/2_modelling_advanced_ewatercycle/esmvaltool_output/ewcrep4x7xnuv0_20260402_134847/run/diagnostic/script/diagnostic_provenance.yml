@@ -1,0 +1,36 @@
+? /home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrep4x7xnuv0_20260402_134847/work/diagnostic/script/OBS6_ERA5_reanaly_1_day_pr_2014-2018.nc
+: ancestors:
+  - /home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrep4x7xnuv0_20260402_134847/preproc/diagnostic/pr/OBS6_ERA5_reanaly_1_day_pr_2014-2018.nc
+  authors:
+  - unmaintained
+  caption: Forcings for generic hydrological model
+  domains:
+  - global
+  projects:
+  - ewatercycle
+  references:
+  - acknow_project
+? /home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrep4x7xnuv0_20260402_134847/work/diagnostic/script/OBS6_ERA5_reanaly_1_day_rsds_2014-2018.nc
+: ancestors:
+  - /home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrep4x7xnuv0_20260402_134847/preproc/diagnostic/rsds/OBS6_ERA5_reanaly_1_day_rsds_2014-2018.nc
+  authors:
+  - unmaintained
+  caption: Forcings for generic hydrological model
+  domains:
+  - global
+  projects:
+  - ewatercycle
+  references:
+  - acknow_project
+? /home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrep4x7xnuv0_20260402_134847/work/diagnostic/script/OBS6_ERA5_reanaly_1_day_tas_2014-2018.nc
+: ancestors:
+  - /home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrep4x7xnuv0_20260402_134847/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2018.nc
+  authors:
+  - unmaintained
+  caption: Forcings for generic hydrological model
+  domains:
+  - global
+  projects:
+  - ewatercycle
+  references:
+  - acknow_project
