@@ -1,0 +1,23 @@
+? /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepwudjm13r_20260401_150035/preproc/diagnostic/pr/OBS6_ERA5_reanaly_1_day_pr_2010-2011.nc
+: alias: ERA5
+  dataset: ERA5
+  diagnostic: diagnostic
+  end_year: 2011
+  filename: /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepwudjm13r_20260401_150035/preproc/diagnostic/pr/OBS6_ERA5_reanaly_1_day_pr_2010-2011.nc
+  frequency: day
+  long_name: Precipitation
+  mip: day
+  modeling_realm:
+  - atmos
+  preprocessor: pr
+  project: OBS6
+  recipe_dataset_index: 0
+  short_name: pr
+  standard_name: precipitation_flux
+  start_year: 2010
+  tier: 3
+  timerange: 2010/2011
+  type: reanaly
+  units: kg m-2 s-1
+  variable_group: pr
+  version: 1

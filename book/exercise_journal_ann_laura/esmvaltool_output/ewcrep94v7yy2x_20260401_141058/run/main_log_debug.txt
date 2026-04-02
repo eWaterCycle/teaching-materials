@@ -1,0 +1,14 @@
+2026-04-01 16:10:58,981 UTC [326578] ERROR   esmvalcore._recipe.recipe:747 Could not create all tasks
+2026-04-01 16:10:58,982 UTC [326578] ERROR   esmvalcore._recipe.recipe:749 In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+2026-04-01 16:10:58,983 UTC [326578] ERROR   esmvalcore._recipe.recipe:749 In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+2026-04-01 16:10:58,983 UTC [326578] ERROR   esmvalcore._recipe.recipe:749 In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+2026-04-01 16:10:59,442 UTC [326578] ERROR   esmvalcore._recipe.recipe:747 Could not create all tasks
+2026-04-01 16:10:59,443 UTC [326578] ERROR   esmvalcore._recipe.recipe:749 In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+2026-04-01 16:10:59,444 UTC [326578] ERROR   esmvalcore._recipe.recipe:749 In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+2026-04-01 16:10:59,444 UTC [326578] ERROR   esmvalcore._recipe.recipe:749 In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+2026-04-01 16:27:48,275 UTC [326578] ERROR   esmvalcore._recipe.recipe:747 Could not create all tasks
+2026-04-01 16:27:48,277 UTC [326578] ERROR   esmvalcore._recipe.recipe:749 In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+2026-04-01 16:27:48,277 UTC [326578] ERROR   esmvalcore._recipe.recipe:749 In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+2026-04-01 16:27:48,278 UTC [326578] ERROR   esmvalcore._recipe.recipe:749 In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+2026-04-01 16:59:46,209 UTC [326578] ERROR   ipykernel.comm:46 No such comm target registered: jupyter.widget.control
+2026-04-01 16:59:46,212 UTC [326578] WARNING Comm:255 No such comm: 652def6e-4b4f-45b6-bec8-5d337319017a

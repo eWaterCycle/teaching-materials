@@ -1,0 +1,22 @@
+ERROR   [326578] Could not create all tasks
+ERROR   [326578] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+ERROR   [326578] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+ERROR   [326578] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+ERROR   [326578] No such comm target registered: jupyter.widget.control
+WARNING [326578] No such comm: 22f3863e-06a7-4e16-8a0f-8b9ecfad5d17
+ERROR   [326578] No such comm target registered: jupyter.widget.control
+WARNING [326578] No such comm: 72cb9485-ec51-406e-a33a-769fed0218d0
+ERROR   [326578] Could not create all tasks
+ERROR   [326578] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+ERROR   [326578] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+ERROR   [326578] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+ERROR   [326578] Could not create all tasks
+ERROR   [326578] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+ERROR   [326578] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+ERROR   [326578] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+ERROR   [326578] Could not create all tasks
+ERROR   [326578] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+ERROR   [326578] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+ERROR   [326578] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/Rhine.shp'
+ERROR   [326578] No such comm target registered: jupyter.widget.control
+WARNING [326578] No such comm: 652def6e-4b4f-45b6-bec8-5d337319017a
