@@ -1,0 +1,13 @@
+auxiliary_data_dir: /data/shared/climate-data/aux
+input_files:
+- /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepfifyxza0_20260403_095844/preproc/diagnostic/pr/metadata.yml
+- /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepfifyxza0_20260403_095844/preproc/diagnostic/tas/metadata.yml
+- /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepfifyxza0_20260403_095844/preproc/diagnostic/rsds/metadata.yml
+log_level: info
+output_file_type: png
+plot_dir: /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepfifyxza0_20260403_095844/plots/diagnostic/script
+recipe: ewcrepfifyxza0.yml
+run_dir: /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepfifyxza0_20260403_095844/run/diagnostic/script
+script: script
+version: 2.11.1
+work_dir: /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepfifyxza0_20260403_095844/work/diagnostic/script
