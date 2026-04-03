@@ -1,0 +1,36 @@
+? /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/work/diagnostic/script/CMIP6_EC-Earth3_day_historical_r1i1p1f1_pr_gr_2010-2014.nc
+: ancestors:
+  - /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/pr/CMIP6_EC-Earth3_day_historical_r1i1p1f1_pr_gr_2010-2014.nc
+  authors:
+  - unmaintained
+  caption: Forcings for generic hydrological model
+  domains:
+  - global
+  projects:
+  - ewatercycle
+  references:
+  - acknow_project
+? /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/work/diagnostic/script/CMIP6_EC-Earth3_day_historical_r1i1p1f1_rsds_gr_2010-2014.nc
+: ancestors:
+  - /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/rsds/CMIP6_EC-Earth3_day_historical_r1i1p1f1_rsds_gr_2010-2014.nc
+  authors:
+  - unmaintained
+  caption: Forcings for generic hydrological model
+  domains:
+  - global
+  projects:
+  - ewatercycle
+  references:
+  - acknow_project
+? /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/work/diagnostic/script/CMIP6_EC-Earth3_day_historical_r1i1p1f1_tas_gr_2010-2014.nc
+: ancestors:
+  - /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/tas/CMIP6_EC-Earth3_day_historical_r1i1p1f1_tas_gr_2010-2014.nc
+  authors:
+  - unmaintained
+  caption: Forcings for generic hydrological model
+  domains:
+  - global
+  projects:
+  - ewatercycle
+  references:
+  - acknow_project

@@ -1,0 +1,8 @@
+start_time: '2010-01-01T00:00:00Z'
+end_time: '2014-12-31T00:00:00Z'
+shape: manning.shp
+filenames:
+  pr: CMIP6_EC-Earth3_day_historical_r1i1p1f1_pr_gr_2010-2014.nc
+  tas: CMIP6_EC-Earth3_day_historical_r1i1p1f1_tas_gr_2010-2014.nc
+  rsds: CMIP6_EC-Earth3_day_historical_r1i1p1f1_rsds_gr_2010-2014.nc
+  evspsblpot: Derived_Makkink_evspsblpot.nc
