@@ -1,0 +1,103 @@
+2026-04-02 15:53:14,493 [488114] INFO     esmvaltool.diag_scripts.shared._base,524	Starting diagnostic script script with configuration:
+auxiliary_data_dir: /data/shared/climate-data/aux
+input_data:
+  ? /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/pr/CMIP6_EC-Earth3_day_historical_r1i1p1f1_pr_gr_2010-2014.nc
+  : activity: CMIP
+    alias: EC-Earth3
+    dataset: EC-Earth3
+    diagnostic: diagnostic
+    end_year: 2014
+    ensemble: r1i1p1f1
+    exp: historical
+    filename: /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/pr/CMIP6_EC-Earth3_day_historical_r1i1p1f1_pr_gr_2010-2014.nc
+    frequency: day
+    grid: gr
+    institute:
+    - EC-Earth-Consortium
+    long_name: Precipitation
+    mip: day
+    modeling_realm:
+    - atmos
+    preprocessor: pr
+    project: CMIP6
+    recipe_dataset_index: 0
+    short_name: pr
+    standard_name: precipitation_flux
+    start_year: 2010
+    timerange: 2010/2014
+    units: kg m-2 s-1
+    variable_group: pr
+    version: v20200310
+  ? /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/rsds/CMIP6_EC-Earth3_day_historical_r1i1p1f1_rsds_gr_2010-2014.nc
+  : activity: CMIP
+    alias: EC-Earth3
+    dataset: EC-Earth3
+    diagnostic: diagnostic
+    end_year: 2014
+    ensemble: r1i1p1f1
+    exp: historical
+    filename: /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/rsds/CMIP6_EC-Earth3_day_historical_r1i1p1f1_rsds_gr_2010-2014.nc
+    frequency: day
+    grid: gr
+    institute:
+    - EC-Earth-Consortium
+    long_name: Surface Downwelling Shortwave Radiation
+    mip: day
+    modeling_realm:
+    - atmos
+    preprocessor: rsds
+    project: CMIP6
+    recipe_dataset_index: 0
+    short_name: rsds
+    standard_name: surface_downwelling_shortwave_flux_in_air
+    start_year: 2010
+    timerange: 2010/2014
+    units: W m-2
+    variable_group: rsds
+    version: v20200310
+  ? /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/tas/CMIP6_EC-Earth3_day_historical_r1i1p1f1_tas_gr_2010-2014.nc
+  : activity: CMIP
+    alias: EC-Earth3
+    dataset: EC-Earth3
+    diagnostic: diagnostic
+    end_year: 2014
+    ensemble: r1i1p1f1
+    exp: historical
+    filename: /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/tas/CMIP6_EC-Earth3_day_historical_r1i1p1f1_tas_gr_2010-2014.nc
+    frequency: day
+    grid: gr
+    institute:
+    - EC-Earth-Consortium
+    long_name: Near-Surface Air Temperature
+    mip: day
+    modeling_realm:
+    - atmos
+    preprocessor: tas
+    project: CMIP6
+    recipe_dataset_index: 0
+    short_name: tas
+    standard_name: air_temperature
+    start_year: 2010
+    timerange: 2010/2014
+    units: K
+    variable_group: tas
+    version: v20200310
+input_files:
+- /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/pr/metadata.yml
+- /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/tas/metadata.yml
+- /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/rsds/metadata.yml
+log_level: info
+output_file_type: png
+plot_dir: /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/plots/diagnostic/script
+recipe: ewcrepo0fe4hr5.yml
+run_dir: /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/run/diagnostic/script
+script: script
+version: 2.11.1
+work_dir: /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/work/diagnostic/script
+
+2026-04-02 15:53:14,493 [488114] INFO     esmvaltool.diag_scripts.shared._base,563	Creating /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/work/diagnostic/script
+2026-04-02 15:53:14,494 [488114] INFO     esmvaltool.diag_scripts.shared._base,563	Creating /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/plots/diagnostic/script
+2026-04-02 15:53:14,494 [488114] INFO     copier.py,44	Copying /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/pr/CMIP6_EC-Earth3_day_historical_r1i1p1f1_pr_gr_2010-2014.nc to /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/work/diagnostic/script/CMIP6_EC-Earth3_day_historical_r1i1p1f1_pr_gr_2010-2014.nc
+2026-04-02 15:53:14,495 [488114] INFO     copier.py,44	Copying /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/tas/CMIP6_EC-Earth3_day_historical_r1i1p1f1_tas_gr_2010-2014.nc to /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/work/diagnostic/script/CMIP6_EC-Earth3_day_historical_r1i1p1f1_tas_gr_2010-2014.nc
+2026-04-02 15:53:14,500 [488114] INFO     copier.py,44	Copying /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/preproc/diagnostic/rsds/CMIP6_EC-Earth3_day_historical_r1i1p1f1_rsds_gr_2010-2014.nc to /home/group10/teaching-materials/book/exercise_journal_ann_laura/esmvaltool_output/ewcrepo0fe4hr5_20260402_155117/work/diagnostic/script/CMIP6_EC-Earth3_day_historical_r1i1p1f1_rsds_gr_2010-2014.nc
+2026-04-02 15:53:14,504 [488114] INFO     esmvaltool.diag_scripts.shared._base,586	End of diagnostic script run.
