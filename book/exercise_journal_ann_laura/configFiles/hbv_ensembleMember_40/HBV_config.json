@@ -1,6 +1,6 @@
 {
-    "precipitation_file": "/home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/manning_Forcing/OBS6_ERA5_reanaly_1_day_pr_2010-2012.nc",
-    "potential_evaporation_file": "/home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/manning_Forcing/Derived_Makkink_evspsblpot.nc",
-    "parameters": "5.97208573747988,0.6858798470605018,258.70701864374314,1.203092088608213,0.16365183946412945,1.824062133124063,0.056502752510962255,0.004607872217326357",
-    "initial_storage": "2,390,80,39"
+    "precipitation_file": "/home/group10/teaching-materials/book/exercise_journal_ann_laura/Data/HBV_forcing_external_2026-04-03 13_40.nc",
+    "potential_evaporation_file": "/home/group10/teaching-materials/book/exercise_journal_ann_laura/Data/HBV_forcing_external_2026-04-03 13_40.nc",
+    "parameters": "5.97208573747988,0.5934014312361311,555.2515668754,1.3198293187532624,0.07617157712147939,3.94123376917763,0.05695254368108448,0.008988309954687926",
+    "initial_storage": "0.0,100.0,5.0,20.0"
 }

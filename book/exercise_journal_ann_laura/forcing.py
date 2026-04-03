@@ -13,7 +13,7 @@ from ewatercycle.base.forcing import DefaultForcing
 
 
 RENAME_CAMELS = {'total_precipitation_sum':'pr',
-                      'potential_evaporation_sum':'"evspsblpot"',
+                      'potential_evaporation_sum':'evspsblpot',
                       'streamflow':'Q'}
 
 REQUIRED_PARAMS = ["pr", "evspsblpot"]
