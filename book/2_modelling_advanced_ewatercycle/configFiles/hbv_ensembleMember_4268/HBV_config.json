@@ -1,0 +1,6 @@
+{
+    "precipitation_file": "/home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/Forcing/manningForcing/OBS6_ERA5_reanaly_1_day_pr_2010-2012.nc",
+    "potential_evaporation_file": "/home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/Forcing/manningForcing/Derived_Makkink_evspsblpot.nc",
+    "parameters": "6.81525376284081,0.8085605608167017,307.248617543055,2.0673503781292686,0.13360085371079689,0.7125553915565708,0.09100306173349045,0.011101324672754175",
+    "initial_storage": "0,100,0,5"
+}

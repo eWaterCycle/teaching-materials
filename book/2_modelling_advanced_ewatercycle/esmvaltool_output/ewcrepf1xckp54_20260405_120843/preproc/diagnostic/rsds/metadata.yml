@@ -1,0 +1,27 @@
+? /home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrepf1xckp54_20260405_120843/preproc/diagnostic/rsds/CMIP6_EC-Earth3_day_historical_r1i1p1f1_rsds_gr_2010-2012.nc
+: activity: CMIP
+  alias: EC-Earth3
+  dataset: EC-Earth3
+  diagnostic: diagnostic
+  end_year: 2012
+  ensemble: r1i1p1f1
+  exp: historical
+  filename: /home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrepf1xckp54_20260405_120843/preproc/diagnostic/rsds/CMIP6_EC-Earth3_day_historical_r1i1p1f1_rsds_gr_2010-2012.nc
+  frequency: day
+  grid: gr
+  institute:
+  - EC-Earth-Consortium
+  long_name: Surface Downwelling Shortwave Radiation
+  mip: day
+  modeling_realm:
+  - atmos
+  preprocessor: rsds
+  project: CMIP6
+  recipe_dataset_index: 0
+  short_name: rsds
+  standard_name: surface_downwelling_shortwave_flux_in_air
+  start_year: 2010
+  timerange: 2010/2012
+  units: W m-2
+  variable_group: rsds
+  version: v20200310

@@ -1,0 +1,314 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<prov:document xmlns:file="https://www.esmvaltool.org/file" xmlns:recipe="https://www.esmvaltool.org/recipe" xmlns:author="https://www.esmvaltool.org/author" xmlns:software="https://www.esmvaltool.org/software" xmlns:project="https://www.esmvaltool.org/project" xmlns:task="https://www.esmvaltool.org/task" xmlns:attribute="https://www.esmvaltool.org/attribute" xmlns:preprocessor="https://www.esmvaltool.org/preprocessor" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrepk5x5xkmj_20260405_113833/preproc/diagnostic/pr/CMIP6_EC-Earth3_day_historical_r1i1p1f1_pr_gr_2010-2012.nc"/>
+    <prov:usedEntity prov:ref="file:/home/group10/.esmvaltool/downloads/CMIP6/CMIP/EC-Earth-Consortium/EC-Earth3/historical/r1i1p1f1/fx/areacella/gr/v20210324/areacella_fx_EC-Earth3_historical_r1i1p1f1_gr.nc"/>
+    <prov:activity prov:ref="task:diagnostic/pr"/>
+  </prov:wasDerivedFrom>
+  <prov:entity prov:id="file:/home/group10/.esmvaltool/downloads/CMIP6/CMIP/EC-Earth-Consortium/EC-Earth3/historical/r1i1p1f1/day/pr/gr/v20200310/pr_day_EC-Earth3_historical_r1i1p1f1_gr_20110101-20111231.nc">
+    <attribute:Conventions>CF-1.7 CMIP-6.2</attribute:Conventions>
+    <attribute:activity_id>CMIP</attribute:activity_id>
+    <attribute:branch_method>standard</attribute:branch_method>
+    <attribute:branch_time>0.0</attribute:branch_time>
+    <attribute:branch_time_in_child>0.0D</attribute:branch_time_in_child>
+    <attribute:branch_time_in_parent>149749.0D</attribute:branch_time_in_parent>
+    <attribute:cmor_version>3.5.0</attribute:cmor_version>
+    <attribute:comment>Production: Thomas Reerink at KNMI</attribute:comment>
+    <attribute:contact>cmip6-data@ec-earth.org</attribute:contact>
+    <attribute:creation_date>2019-09-26T07:44:42Z</attribute:creation_date>
+    <attribute:data_specs_version>01.00.31</attribute:data_specs_version>
+    <attribute:experiment>all-forcing simulation of the recent past</attribute:experiment>
+    <attribute:experiment_id>historical</attribute:experiment_id>
+    <attribute:external_variables>areacella</attribute:external_variables>
+    <attribute:forcing_index>1</attribute:forcing_index>
+    <attribute:frequency>day</attribute:frequency>
+    <attribute:further_info_url>https://furtherinfo.es-doc.org/CMIP6.EC-Earth-Consortium.EC-Earth3.historical.none.r1i1p1f1</attribute:further_info_url>
+    <attribute:grid>T255L91</attribute:grid>
+    <attribute:grid_label>gr</attribute:grid_label>
+    <attribute:history>2019-09-26T07:42:20Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.;
+processed by ece2cmor v1.2.0, git rev. 85ffde4a22948560fae15bc2dedfc91a3d473d30
+The cmor-fixer version v2.0 script has been applied.The cmor-fixer version v2.1 script has been applied.</attribute:history>
+    <attribute:initialization_index>1</attribute:initialization_index>
+    <attribute:institution>AEMET, Spain; BSC, Spain; CNR-ISAC, Italy; DMI, Denmark; ENEA, Italy; FMI, Finland; Geomar, Germany; ICHEC, Ireland; ICTP, Italy; IDL, Portugal; IMAU, The Netherlands; IPMA, Portugal; KIT, Karlsruhe, Germany; KNMI, The Netherlands; Lund University, Sweden; Met Eireann, Ireland; NLeSC, The Netherlands; NTNU, Norway; Oxford University, UK; surfSARA, The Netherlands; SMHI, Sweden; Stockholm University, Sweden; Unite ASTR, Belgium; University College Dublin, Ireland; University of Bergen, Norway; University of Copenhagen, Denmark; University of Helsinki, Finland; University of Santiago de Compostela, Spain; Uppsala University, Sweden; Utrecht University, The Netherlands; Vrije Universiteit Amsterdam, the Netherlands; Wageningen University, The Netherlands. Mailing address: EC-Earth consortium, Rossby Center, Swedish Meteorological and Hydrological Institute/SMHI, SE-601 76 Norrkoping, Sweden</attribute:institution>
+    <attribute:institution_id>EC-Earth-Consortium</attribute:institution_id>
+    <attribute:license>CMIP6 model data produced by EC-Earth-Consortium is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file) and at http://www.ec-earth.org. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.</attribute:license>
+    <attribute:mip_era>CMIP6</attribute:mip_era>
+    <attribute:nominal_resolution>100 km</attribute:nominal_resolution>
+    <attribute:parent_activity_id>CMIP</attribute:parent_activity_id>
+    <attribute:parent_experiment_id>piControl</attribute:parent_experiment_id>
+    <attribute:parent_mip_era>CMIP6</attribute:parent_mip_era>
+    <attribute:parent_source_id>EC-Earth3</attribute:parent_source_id>
+    <attribute:parent_time_units>days since 1850-01-01</attribute:parent_time_units>
+    <attribute:parent_variant_label>r1i1p1f1</attribute:parent_variant_label>
+    <attribute:physics_index>1</attribute:physics_index>
+    <attribute:product>model-output</attribute:product>
+    <attribute:realization_index>1</attribute:realization_index>
+    <attribute:realm>atmos</attribute:realm>
+    <attribute:source>EC-Earth3 (2019): 
+aerosol: none
+atmos: IFS cy36r4 (TL255, linearly reduced Gaussian grid equivalent to 512 x 256 longitude/latitude; 91 levels; top level 0.01 hPa)
+atmosChem: none
+land: HTESSEL (land surface scheme built in IFS)
+landIce: none
+ocean: NEMO3.6 (ORCA1 tripolar primarily 1 deg with meridional refinement down to 1/3 degree in the tropics; 362 x 292 longitude/latitude; 75 levels; top grid cell 0-1 m)
+ocnBgchem: none
+seaIce: LIM3</attribute:source>
+    <attribute:source_id>EC-Earth3</attribute:source_id>
+    <attribute:source_type>AOGCM</attribute:source_type>
+    <attribute:sub_experiment>none</attribute:sub_experiment>
+    <attribute:sub_experiment_id>none</attribute:sub_experiment_id>
+    <attribute:table_id>day</attribute:table_id>
+    <attribute:table_info>Creation Date:(24 July 2019) MD5:70649eeb16bc90c431e35b583fac7375</attribute:table_info>
+    <attribute:title>EC-Earth3 output prepared for CMIP6</attribute:title>
+    <attribute:tracking_id>hdl:21.14100/43e856c8-db41-46e5-b8b3-f1e0e2224982</attribute:tracking_id>
+    <attribute:variable_id>pr</attribute:variable_id>
+    <attribute:variant_label>r1i1p1f1</attribute:variant_label>
+  </prov:entity>
+  <prov:activity prov:id="software:esmvaltool==2.11.1"/>
+  <prov:wasStartedBy>
+    <prov:activity prov:ref="task:diagnostic/pr"/>
+    <prov:trigger prov:ref="recipe:ewcrepk5x5xkmj.yml"/>
+    <prov:starter prov:ref="software:esmvaltool==2.11.1"/>
+  </prov:wasStartedBy>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrepk5x5xkmj_20260405_113833/preproc/diagnostic/pr/CMIP6_EC-Earth3_day_historical_r1i1p1f1_pr_gr_2010-2012.nc"/>
+    <prov:usedEntity prov:ref="file:/home/group10/.esmvaltool/downloads/CMIP6/CMIP/EC-Earth-Consortium/EC-Earth3/historical/r1i1p1f1/day/pr/gr/v20200310/pr_day_EC-Earth3_historical_r1i1p1f1_gr_20120101-20121231.nc"/>
+    <prov:activity prov:ref="task:diagnostic/pr"/>
+  </prov:wasDerivedFrom>
+  <prov:entity prov:id="recipe:ewcrepk5x5xkmj.yml">
+    <attribute:description>Generic lumped forcing recipe</attribute:description>
+    <attribute:references>[]</attribute:references>
+  </prov:entity>
+  <prov:entity prov:id="file:/home/group10/.esmvaltool/downloads/CMIP6/CMIP/EC-Earth-Consortium/EC-Earth3/historical/r1i1p1f1/fx/areacella/gr/v20210324/areacella_fx_EC-Earth3_historical_r1i1p1f1_gr.nc">
+    <attribute:Conventions>CF-1.7 CMIP-6.2</attribute:Conventions>
+    <attribute:activity_id>CMIP</attribute:activity_id>
+    <attribute:branch_method>standard</attribute:branch_method>
+    <attribute:branch_time_in_child>0.0</attribute:branch_time_in_child>
+    <attribute:branch_time_in_parent>149749.0</attribute:branch_time_in_parent>
+    <attribute:cmor_version>3.5.0</attribute:cmor_version>
+    <attribute:comment>Production: Thomas Reerink at KNMI</attribute:comment>
+    <attribute:contact>cmip6-data@ec-earth.org</attribute:contact>
+    <attribute:creation_date>2021-03-23T20:42:31Z</attribute:creation_date>
+    <attribute:data_specs_version>01.00.33</attribute:data_specs_version>
+    <attribute:ece2cmor_git_revision>314d9095c36fea37eb55bd3a6a496cf0296cea14-changes</attribute:ece2cmor_git_revision>
+    <attribute:experiment>all-forcing simulation of the recent past</attribute:experiment>
+    <attribute:experiment_id>historical</attribute:experiment_id>
+    <attribute:forcing_index>1</attribute:forcing_index>
+    <attribute:frequency>fx</attribute:frequency>
+    <attribute:further_info_url>https://furtherinfo.es-doc.org/CMIP6.EC-Earth-Consortium.EC-Earth3.historical.none.r1i1p1f1</attribute:further_info_url>
+    <attribute:grid>T255L91</attribute:grid>
+    <attribute:grid_label>gr</attribute:grid_label>
+    <attribute:history>2021-03-23T20:42:31Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.;
+processed by ece2cmor v1.7.0, git rev. 314d9095c36fea37eb55bd3a6a496cf0296cea14-changes
+</attribute:history>
+    <attribute:initialization_index>1</attribute:initialization_index>
+    <attribute:institution>AEMET, Spain; BSC, Spain; CNR-ISAC, Italy; DMI, Denmark; ENEA, Italy; FMI, Finland; Geomar, Germany; ICHEC, Ireland; ICTP, Italy; IDL, Portugal; IMAU, The Netherlands; IPMA, Portugal; KIT, Karlsruhe, Germany; KNMI, The Netherlands; Lund University, Sweden; Met Eireann, Ireland; NLeSC, The Netherlands; NTNU, Norway; Oxford University, UK; surfSARA, The Netherlands; SMHI, Sweden; Stockholm University, Sweden; Unite ASTR, Belgium; University College Dublin, Ireland; University of Bergen, Norway; University of Copenhagen, Denmark; University of Helsinki, Finland; University of Santiago de Compostela, Spain; Uppsala University, Sweden; Utrecht University, The Netherlands; Vrije Universiteit Amsterdam, the Netherlands; Wageningen University, The Netherlands. Mailing address: EC-Earth consortium, Rossby Center, Swedish Meteorological and Hydrological Institute/SMHI, SE-601 76 Norrkoping, Sweden</attribute:institution>
+    <attribute:institution_id>EC-Earth-Consortium</attribute:institution_id>
+    <attribute:latest_applied_cmor_fixer_version>None</attribute:latest_applied_cmor_fixer_version>
+    <attribute:latest_ece2cmor_version>v1.7.0</attribute:latest_ece2cmor_version>
+    <attribute:license>CMIP6 model data produced by EC-Earth-Consortium is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file) and at http://www.ec-earth.org. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.</attribute:license>
+    <attribute:mip_era>CMIP6</attribute:mip_era>
+    <attribute:nominal_resolution>100 km</attribute:nominal_resolution>
+    <attribute:parent_activity_id>CMIP</attribute:parent_activity_id>
+    <attribute:parent_experiment_id>piControl</attribute:parent_experiment_id>
+    <attribute:parent_mip_era>CMIP6</attribute:parent_mip_era>
+    <attribute:parent_source_id>EC-Earth3</attribute:parent_source_id>
+    <attribute:parent_time_units>days since 1850-01-01</attribute:parent_time_units>
+    <attribute:parent_variant_label>r1i1p1f1</attribute:parent_variant_label>
+    <attribute:physics_index>1</attribute:physics_index>
+    <attribute:product>model-output</attribute:product>
+    <attribute:realization_index>1</attribute:realization_index>
+    <attribute:realm>atmos</attribute:realm>
+    <attribute:source>EC-Earth3 (2019): 
+aerosol: none
+atmos: IFS cy36r4 (TL255, linearly reduced Gaussian grid equivalent to 512 x 256 longitude/latitude; 91 levels; top level 0.01 hPa)
+atmosChem: none
+land: HTESSEL (land surface scheme built in IFS)
+landIce: none
+ocean: NEMO3.6 (ORCA1 tripolar primarily 1 deg with meridional refinement down to 1/3 degree in the tropics; 362 x 292 longitude/latitude; 75 levels; top grid cell 0-1 m)
+ocnBgchem: none
+seaIce: LIM3</attribute:source>
+    <attribute:source_id>EC-Earth3</attribute:source_id>
+    <attribute:source_type>AOGCM</attribute:source_type>
+    <attribute:sub_experiment>none</attribute:sub_experiment>
+    <attribute:sub_experiment_id>none</attribute:sub_experiment_id>
+    <attribute:table_id>fx</attribute:table_id>
+    <attribute:table_info>Creation Date:(18 November 2020) MD5:4cee79e8d87199903c42a3cd96e09472</attribute:table_info>
+    <attribute:title>EC-Earth3 output prepared for CMIP6</attribute:title>
+    <attribute:tracking_id>hdl:21.14100/cdc286fc-bf7c-452f-a56f-9bc5719a8f1a</attribute:tracking_id>
+    <attribute:variable_id>areacella</attribute:variable_id>
+    <attribute:variant_label>r1i1p1f1</attribute:variant_label>
+  </prov:entity>
+  <prov:agent prov:id="project:eWaterCycle project"/>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrepk5x5xkmj_20260405_113833/preproc/diagnostic/pr/CMIP6_EC-Earth3_day_historical_r1i1p1f1_pr_gr_2010-2012.nc"/>
+    <prov:usedEntity prov:ref="file:/home/group10/.esmvaltool/downloads/CMIP6/CMIP/EC-Earth-Consortium/EC-Earth3/historical/r1i1p1f1/day/pr/gr/v20200310/pr_day_EC-Earth3_historical_r1i1p1f1_gr_20100101-20101231.nc"/>
+    <prov:activity prov:ref="task:diagnostic/pr"/>
+  </prov:wasDerivedFrom>
+  <prov:agent prov:id="author:No maintainer available">
+    <attribute:institute>Unseen University</attribute:institute>
+  </prov:agent>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrepk5x5xkmj_20260405_113833/preproc/diagnostic/pr/CMIP6_EC-Earth3_day_historical_r1i1p1f1_pr_gr_2010-2012.nc"/>
+    <prov:usedEntity prov:ref="file:/home/group10/.esmvaltool/downloads/CMIP6/CMIP/EC-Earth-Consortium/EC-Earth3/historical/r1i1p1f1/day/pr/gr/v20200310/pr_day_EC-Earth3_historical_r1i1p1f1_gr_20110101-20111231.nc"/>
+    <prov:activity prov:ref="task:diagnostic/pr"/>
+  </prov:wasDerivedFrom>
+  <prov:entity prov:id="file:/home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrepk5x5xkmj_20260405_113833/preproc/diagnostic/pr/CMIP6_EC-Earth3_day_historical_r1i1p1f1_pr_gr_2010-2012.nc">
+    <attribute:activity>CMIP</attribute:activity>
+    <attribute:alias>EC-Earth3</attribute:alias>
+    <attribute:dataset>EC-Earth3</attribute:dataset>
+    <attribute:diagnostic>diagnostic</attribute:diagnostic>
+    <attribute:end_year>2012</attribute:end_year>
+    <attribute:ensemble>r1i1p1f1</attribute:ensemble>
+    <attribute:exp>historical</attribute:exp>
+    <attribute:filename>/home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrepk5x5xkmj_20260405_113833/preproc/diagnostic/pr/CMIP6_EC-Earth3_day_historical_r1i1p1f1_pr_gr_2010-2012.nc</attribute:filename>
+    <attribute:frequency>day</attribute:frequency>
+    <attribute:grid>gr</attribute:grid>
+    <attribute:institute>['EC-Earth-Consortium']</attribute:institute>
+    <attribute:long_name>Precipitation</attribute:long_name>
+    <attribute:mip>day</attribute:mip>
+    <attribute:modeling_realm>['atmos']</attribute:modeling_realm>
+    <attribute:original_short_name>pr</attribute:original_short_name>
+    <attribute:preprocessor>pr</attribute:preprocessor>
+    <attribute:project>CMIP6</attribute:project>
+    <attribute:recipe_dataset_index>0</attribute:recipe_dataset_index>
+    <attribute:short_name>pr</attribute:short_name>
+    <attribute:standard_name>precipitation_flux</attribute:standard_name>
+    <attribute:start_year>2010</attribute:start_year>
+    <attribute:timerange>2010/2012</attribute:timerange>
+    <attribute:units>kg m-2 s-1</attribute:units>
+    <attribute:variable_group>pr</attribute:variable_group>
+    <attribute:version>v20200310</attribute:version>
+    <preprocessor:area_statistics>{'operator': 'mean'}</preprocessor:area_statistics>
+    <preprocessor:extract_shape>{'shapefile': PosixPath('/home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/Forcing/manning.shp'), 'crop': True, 'decomposed': False}</preprocessor:extract_shape>
+    <preprocessor:remove_supplementary_variables>{}</preprocessor:remove_supplementary_variables>
+    <preprocessor:save>{'compress': False, 'filename': PosixPath('/home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/esmvaltool_output/ewcrepk5x5xkmj_20260405_113833/preproc/diagnostic/pr/CMIP6_EC-Earth3_day_historical_r1i1p1f1_pr_gr_2010-2012.nc')}</preprocessor:save>
+  </prov:entity>
+  <prov:wasAttributedTo>
+    <prov:entity prov:ref="recipe:ewcrepk5x5xkmj.yml"/>
+    <prov:agent prov:ref="project:eWaterCycle project"/>
+  </prov:wasAttributedTo>
+  <prov:activity prov:id="task:diagnostic/pr"/>
+  <prov:entity prov:id="file:/home/group10/.esmvaltool/downloads/CMIP6/CMIP/EC-Earth-Consortium/EC-Earth3/historical/r1i1p1f1/day/pr/gr/v20200310/pr_day_EC-Earth3_historical_r1i1p1f1_gr_20120101-20121231.nc">
+    <attribute:Conventions>CF-1.7 CMIP-6.2</attribute:Conventions>
+    <attribute:activity_id>CMIP</attribute:activity_id>
+    <attribute:branch_method>standard</attribute:branch_method>
+    <attribute:branch_time>0.0</attribute:branch_time>
+    <attribute:branch_time_in_child>0.0D</attribute:branch_time_in_child>
+    <attribute:branch_time_in_parent>149749.0D</attribute:branch_time_in_parent>
+    <attribute:cmor_version>3.5.0</attribute:cmor_version>
+    <attribute:comment>Production: Thomas Reerink at KNMI</attribute:comment>
+    <attribute:contact>cmip6-data@ec-earth.org</attribute:contact>
+    <attribute:creation_date>2019-09-26T08:18:34Z</attribute:creation_date>
+    <attribute:data_specs_version>01.00.31</attribute:data_specs_version>
+    <attribute:experiment>all-forcing simulation of the recent past</attribute:experiment>
+    <attribute:experiment_id>historical</attribute:experiment_id>
+    <attribute:external_variables>areacella</attribute:external_variables>
+    <attribute:forcing_index>1</attribute:forcing_index>
+    <attribute:frequency>day</attribute:frequency>
+    <attribute:further_info_url>https://furtherinfo.es-doc.org/CMIP6.EC-Earth-Consortium.EC-Earth3.historical.none.r1i1p1f1</attribute:further_info_url>
+    <attribute:grid>T255L91</attribute:grid>
+    <attribute:grid_label>gr</attribute:grid_label>
+    <attribute:history>2019-09-26T08:16:02Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.;
+processed by ece2cmor v1.2.0, git rev. 85ffde4a22948560fae15bc2dedfc91a3d473d30
+The cmor-fixer version v2.0 script has been applied.The cmor-fixer version v2.1 script has been applied.</attribute:history>
+    <attribute:initialization_index>1</attribute:initialization_index>
+    <attribute:institution>AEMET, Spain; BSC, Spain; CNR-ISAC, Italy; DMI, Denmark; ENEA, Italy; FMI, Finland; Geomar, Germany; ICHEC, Ireland; ICTP, Italy; IDL, Portugal; IMAU, The Netherlands; IPMA, Portugal; KIT, Karlsruhe, Germany; KNMI, The Netherlands; Lund University, Sweden; Met Eireann, Ireland; NLeSC, The Netherlands; NTNU, Norway; Oxford University, UK; surfSARA, The Netherlands; SMHI, Sweden; Stockholm University, Sweden; Unite ASTR, Belgium; University College Dublin, Ireland; University of Bergen, Norway; University of Copenhagen, Denmark; University of Helsinki, Finland; University of Santiago de Compostela, Spain; Uppsala University, Sweden; Utrecht University, The Netherlands; Vrije Universiteit Amsterdam, the Netherlands; Wageningen University, The Netherlands. Mailing address: EC-Earth consortium, Rossby Center, Swedish Meteorological and Hydrological Institute/SMHI, SE-601 76 Norrkoping, Sweden</attribute:institution>
+    <attribute:institution_id>EC-Earth-Consortium</attribute:institution_id>
+    <attribute:license>CMIP6 model data produced by EC-Earth-Consortium is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file) and at http://www.ec-earth.org. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.</attribute:license>
+    <attribute:mip_era>CMIP6</attribute:mip_era>
+    <attribute:nominal_resolution>100 km</attribute:nominal_resolution>
+    <attribute:parent_activity_id>CMIP</attribute:parent_activity_id>
+    <attribute:parent_experiment_id>piControl</attribute:parent_experiment_id>
+    <attribute:parent_mip_era>CMIP6</attribute:parent_mip_era>
+    <attribute:parent_source_id>EC-Earth3</attribute:parent_source_id>
+    <attribute:parent_time_units>days since 1850-01-01</attribute:parent_time_units>
+    <attribute:parent_variant_label>r1i1p1f1</attribute:parent_variant_label>
+    <attribute:physics_index>1</attribute:physics_index>
+    <attribute:product>model-output</attribute:product>
+    <attribute:realization_index>1</attribute:realization_index>
+    <attribute:realm>atmos</attribute:realm>
+    <attribute:source>EC-Earth3 (2019): 
+aerosol: none
+atmos: IFS cy36r4 (TL255, linearly reduced Gaussian grid equivalent to 512 x 256 longitude/latitude; 91 levels; top level 0.01 hPa)
+atmosChem: none
+land: HTESSEL (land surface scheme built in IFS)
+landIce: none
+ocean: NEMO3.6 (ORCA1 tripolar primarily 1 deg with meridional refinement down to 1/3 degree in the tropics; 362 x 292 longitude/latitude; 75 levels; top grid cell 0-1 m)
+ocnBgchem: none
+seaIce: LIM3</attribute:source>
+    <attribute:source_id>EC-Earth3</attribute:source_id>
+    <attribute:source_type>AOGCM</attribute:source_type>
+    <attribute:sub_experiment>none</attribute:sub_experiment>
+    <attribute:sub_experiment_id>none</attribute:sub_experiment_id>
+    <attribute:table_id>day</attribute:table_id>
+    <attribute:table_info>Creation Date:(24 July 2019) MD5:70649eeb16bc90c431e35b583fac7375</attribute:table_info>
+    <attribute:title>EC-Earth3 output prepared for CMIP6</attribute:title>
+    <attribute:tracking_id>hdl:21.14100/c00a6e9d-87c3-4511-aa90-d5153778d9ca</attribute:tracking_id>
+    <attribute:variable_id>pr</attribute:variable_id>
+    <attribute:variant_label>r1i1p1f1</attribute:variant_label>
+  </prov:entity>
+  <prov:wasAttributedTo>
+    <prov:entity prov:ref="recipe:ewcrepk5x5xkmj.yml"/>
+    <prov:agent prov:ref="author:No maintainer available"/>
+  </prov:wasAttributedTo>
+  <prov:entity prov:id="file:/home/group10/.esmvaltool/downloads/CMIP6/CMIP/EC-Earth-Consortium/EC-Earth3/historical/r1i1p1f1/day/pr/gr/v20200310/pr_day_EC-Earth3_historical_r1i1p1f1_gr_20100101-20101231.nc">
+    <attribute:Conventions>CF-1.7 CMIP-6.2</attribute:Conventions>
+    <attribute:activity_id>CMIP</attribute:activity_id>
+    <attribute:branch_method>standard</attribute:branch_method>
+    <attribute:branch_time>0.0</attribute:branch_time>
+    <attribute:branch_time_in_child>0.0D</attribute:branch_time_in_child>
+    <attribute:branch_time_in_parent>149749.0D</attribute:branch_time_in_parent>
+    <attribute:cmor_version>3.5.0</attribute:cmor_version>
+    <attribute:comment>Production: Thomas Reerink at KNMI</attribute:comment>
+    <attribute:contact>cmip6-data@ec-earth.org</attribute:contact>
+    <attribute:creation_date>2019-09-26T07:25:09Z</attribute:creation_date>
+    <attribute:data_specs_version>01.00.31</attribute:data_specs_version>
+    <attribute:experiment>all-forcing simulation of the recent past</attribute:experiment>
+    <attribute:experiment_id>historical</attribute:experiment_id>
+    <attribute:external_variables>areacella</attribute:external_variables>
+    <attribute:forcing_index>1</attribute:forcing_index>
+    <attribute:frequency>day</attribute:frequency>
+    <attribute:further_info_url>https://furtherinfo.es-doc.org/CMIP6.EC-Earth-Consortium.EC-Earth3.historical.none.r1i1p1f1</attribute:further_info_url>
+    <attribute:grid>T255L91</attribute:grid>
+    <attribute:grid_label>gr</attribute:grid_label>
+    <attribute:history>2019-09-26T07:22:40Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.;
+processed by ece2cmor v1.2.0, git rev. 85ffde4a22948560fae15bc2dedfc91a3d473d30
+The cmor-fixer version v2.0 script has been applied.The cmor-fixer version v2.1 script has been applied.</attribute:history>
+    <attribute:initialization_index>1</attribute:initialization_index>
+    <attribute:institution>AEMET, Spain; BSC, Spain; CNR-ISAC, Italy; DMI, Denmark; ENEA, Italy; FMI, Finland; Geomar, Germany; ICHEC, Ireland; ICTP, Italy; IDL, Portugal; IMAU, The Netherlands; IPMA, Portugal; KIT, Karlsruhe, Germany; KNMI, The Netherlands; Lund University, Sweden; Met Eireann, Ireland; NLeSC, The Netherlands; NTNU, Norway; Oxford University, UK; surfSARA, The Netherlands; SMHI, Sweden; Stockholm University, Sweden; Unite ASTR, Belgium; University College Dublin, Ireland; University of Bergen, Norway; University of Copenhagen, Denmark; University of Helsinki, Finland; University of Santiago de Compostela, Spain; Uppsala University, Sweden; Utrecht University, The Netherlands; Vrije Universiteit Amsterdam, the Netherlands; Wageningen University, The Netherlands. Mailing address: EC-Earth consortium, Rossby Center, Swedish Meteorological and Hydrological Institute/SMHI, SE-601 76 Norrkoping, Sweden</attribute:institution>
+    <attribute:institution_id>EC-Earth-Consortium</attribute:institution_id>
+    <attribute:license>CMIP6 model data produced by EC-Earth-Consortium is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file) and at http://www.ec-earth.org. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.</attribute:license>
+    <attribute:mip_era>CMIP6</attribute:mip_era>
+    <attribute:nominal_resolution>100 km</attribute:nominal_resolution>
+    <attribute:parent_activity_id>CMIP</attribute:parent_activity_id>
+    <attribute:parent_experiment_id>piControl</attribute:parent_experiment_id>
+    <attribute:parent_mip_era>CMIP6</attribute:parent_mip_era>
+    <attribute:parent_source_id>EC-Earth3</attribute:parent_source_id>
+    <attribute:parent_time_units>days since 1850-01-01</attribute:parent_time_units>
+    <attribute:parent_variant_label>r1i1p1f1</attribute:parent_variant_label>
+    <attribute:physics_index>1</attribute:physics_index>
+    <attribute:product>model-output</attribute:product>
+    <attribute:realization_index>1</attribute:realization_index>
+    <attribute:realm>atmos</attribute:realm>
+    <attribute:source>EC-Earth3 (2019): 
+aerosol: none
+atmos: IFS cy36r4 (TL255, linearly reduced Gaussian grid equivalent to 512 x 256 longitude/latitude; 91 levels; top level 0.01 hPa)
+atmosChem: none
+land: HTESSEL (land surface scheme built in IFS)
+landIce: none
+ocean: NEMO3.6 (ORCA1 tripolar primarily 1 deg with meridional refinement down to 1/3 degree in the tropics; 362 x 292 longitude/latitude; 75 levels; top grid cell 0-1 m)
+ocnBgchem: none
+seaIce: LIM3</attribute:source>
+    <attribute:source_id>EC-Earth3</attribute:source_id>
+    <attribute:source_type>AOGCM</attribute:source_type>
+    <attribute:sub_experiment>none</attribute:sub_experiment>
+    <attribute:sub_experiment_id>none</attribute:sub_experiment_id>
+    <attribute:table_id>day</attribute:table_id>
+    <attribute:table_info>Creation Date:(24 July 2019) MD5:70649eeb16bc90c431e35b583fac7375</attribute:table_info>
+    <attribute:title>EC-Earth3 output prepared for CMIP6</attribute:title>
+    <attribute:tracking_id>hdl:21.14100/6077ba7f-1c2b-4ca2-a650-53ccd08e9f30</attribute:tracking_id>
+    <attribute:variable_id>pr</attribute:variable_id>
+    <attribute:variant_label>r1i1p1f1</attribute:variant_label>
+  </prov:entity>
+</prov:document>
