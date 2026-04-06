@@ -1,0 +1,4 @@
+ERROR   [113422] Could not create all tasks
+ERROR   [113422] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/killawarra.shp'
+ERROR   [113422] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/killawarra.shp'
+ERROR   [113422] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/killawarra.shp'

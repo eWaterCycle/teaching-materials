@@ -1,0 +1,4 @@
+2026-04-06 12:02:35,681 UTC [113422] ERROR   esmvalcore._recipe.recipe:747 Could not create all tasks
+2026-04-06 12:02:35,682 UTC [113422] ERROR   esmvalcore._recipe.recipe:749 In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/killawarra.shp'
+2026-04-06 12:02:35,683 UTC [113422] ERROR   esmvalcore._recipe.recipe:749 In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/killawarra.shp'
+2026-04-06 12:02:35,683 UTC [113422] ERROR   esmvalcore._recipe.recipe:749 In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/killawarra.shp'
