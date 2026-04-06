@@ -32,3 +32,5 @@ ERROR   [113422] No such comm target registered: jupyter.widget.control
 WARNING [113422] No such comm: 2eec8a1d-6453-4e2b-b580-5a9ea5ddd186
 ERROR   [113422] No such comm target registered: jupyter.widget.control
 WARNING [113422] No such comm: e7542991-b11b-4990-8e49-a70ffcf0189a
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: 15e52eb1-5203-4003-a6ff-74a04a34fd76

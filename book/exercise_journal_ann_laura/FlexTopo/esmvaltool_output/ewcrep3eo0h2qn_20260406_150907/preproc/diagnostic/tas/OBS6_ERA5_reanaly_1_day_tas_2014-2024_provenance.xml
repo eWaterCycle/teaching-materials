@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<prov:document xmlns:software="https://www.esmvaltool.org/software" xmlns:task="https://www.esmvaltool.org/task" xmlns:recipe="https://www.esmvaltool.org/recipe" xmlns:author="https://www.esmvaltool.org/author" xmlns:preprocessor="https://www.esmvaltool.org/preprocessor" xmlns:project="https://www.esmvaltool.org/project" xmlns:file="https://www.esmvaltool.org/file" xmlns:attribute="https://www.esmvaltool.org/attribute" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <prov:entity prov:id="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2022-2022.nc">
+    <attribute:Conventions>CF-1.7</attribute:Conventions>
+    <attribute:comment>Contains modified Copernicus Climate Change Service Information 2020</attribute:comment>
+  </prov:entity>
+  <prov:wasAttributedTo>
+    <prov:entity prov:ref="recipe:ewcrep3eo0h2qn.yml"/>
+    <prov:agent prov:ref="project:eWaterCycle project"/>
+  </prov:wasAttributedTo>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep3eo0h2qn_20260406_150907/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2024.nc"/>
+    <prov:usedEntity prov:ref="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2016-2016.nc"/>
+    <prov:activity prov:ref="task:diagnostic/tas"/>
+  </prov:wasDerivedFrom>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep3eo0h2qn_20260406_150907/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2024.nc"/>
+    <prov:usedEntity prov:ref="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2024-2024.nc"/>
+    <prov:activity prov:ref="task:diagnostic/tas"/>
+  </prov:wasDerivedFrom>
+  <prov:activity prov:id="task:diagnostic/tas"/>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep3eo0h2qn_20260406_150907/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2024.nc"/>
+    <prov:usedEntity prov:ref="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2018-2018.nc"/>
+    <prov:activity prov:ref="task:diagnostic/tas"/>
+  </prov:wasDerivedFrom>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep3eo0h2qn_20260406_150907/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2024.nc"/>
+    <prov:usedEntity prov:ref="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2020-2020.nc"/>
+    <prov:activity prov:ref="task:diagnostic/tas"/>
+  </prov:wasDerivedFrom>
+  <prov:entity prov:id="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2021-2021.nc">
+    <attribute:Conventions>CF-1.7</attribute:Conventions>
+    <attribute:comment>Contains modified Copernicus Climate Change Service Information 2020</attribute:comment>
+  </prov:entity>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep3eo0h2qn_20260406_150907/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2024.nc"/>
+    <prov:usedEntity prov:ref="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_20140101-20141231.nc"/>
+    <prov:activity prov:ref="task:diagnostic/tas"/>
+  </prov:wasDerivedFrom>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep3eo0h2qn_20260406_150907/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2024.nc"/>
+    <prov:usedEntity prov:ref="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2015-2015.nc"/>
+    <prov:activity prov:ref="task:diagnostic/tas"/>
+  </prov:wasDerivedFrom>
+  <prov:entity prov:id="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_20140101-20141231.nc">
+    <attribute:Conventions>CF-1.7</attribute:Conventions>
+    <attribute:comment>Contains modified Copernicus Climate Change Service Information 2021</attribute:comment>
+  </prov:entity>
+  <prov:entity prov:id="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2018-2018.nc">
+    <attribute:Conventions>CF-1.7</attribute:Conventions>
+    <attribute:comment>Contains modified Copernicus Climate Change Service Information 2020</attribute:comment>
+  </prov:entity>
+  <prov:entity prov:id="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2020-2020.nc">
+    <attribute:Conventions>CF-1.7</attribute:Conventions>
+    <attribute:comment>Contains modified Copernicus Climate Change Service Information 2020</attribute:comment>
+  </prov:entity>
+  <prov:entity prov:id="recipe:ewcrep3eo0h2qn.yml">
+    <attribute:description>Generic lumped forcing recipe</attribute:description>
+    <attribute:references>[]</attribute:references>
+  </prov:entity>
+  <prov:wasStartedBy>
+    <prov:activity prov:ref="task:diagnostic/tas"/>
+    <prov:trigger prov:ref="recipe:ewcrep3eo0h2qn.yml"/>
+    <prov:starter prov:ref="software:esmvaltool==2.11.1"/>
+  </prov:wasStartedBy>
+  <prov:activity prov:id="software:esmvaltool==2.11.1"/>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep3eo0h2qn_20260406_150907/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2024.nc"/>
+    <prov:usedEntity prov:ref="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2017-2017.nc"/>
+    <prov:activity prov:ref="task:diagnostic/tas"/>
+  </prov:wasDerivedFrom>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep3eo0h2qn_20260406_150907/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2024.nc"/>
+    <prov:usedEntity prov:ref="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2022-2022.nc"/>
+    <prov:activity prov:ref="task:diagnostic/tas"/>
+  </prov:wasDerivedFrom>
+  <prov:entity prov:id="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2023-2023.nc">
+    <attribute:Conventions>CF-1.7</attribute:Conventions>
+    <attribute:comment>Contains modified Copernicus Climate Change Service Information 2020</attribute:comment>
+  </prov:entity>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep3eo0h2qn_20260406_150907/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2024.nc"/>
+    <prov:usedEntity prov:ref="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2023-2023.nc"/>
+    <prov:activity prov:ref="task:diagnostic/tas"/>
+  </prov:wasDerivedFrom>
+  <prov:entity prov:id="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2024-2024.nc">
+    <attribute:Conventions>CF-1.7</attribute:Conventions>
+    <attribute:comment>Contains modified Copernicus Climate Change Service Information 2020</attribute:comment>
+  </prov:entity>
+  <prov:entity prov:id="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2019-2019.nc">
+    <attribute:Conventions>CF-1.7</attribute:Conventions>
+    <attribute:comment>Contains modified Copernicus Climate Change Service Information 2020</attribute:comment>
+  </prov:entity>
+  <prov:agent prov:id="project:eWaterCycle project"/>
+  <prov:entity prov:id="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2016-2016.nc">
+    <attribute:Conventions>CF-1.7</attribute:Conventions>
+    <attribute:comment>Contains modified Copernicus Climate Change Service Information 2020</attribute:comment>
+  </prov:entity>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep3eo0h2qn_20260406_150907/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2024.nc"/>
+    <prov:usedEntity prov:ref="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2021-2021.nc"/>
+    <prov:activity prov:ref="task:diagnostic/tas"/>
+  </prov:wasDerivedFrom>
+  <prov:entity prov:id="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2015-2015.nc">
+    <attribute:Conventions>CF-1.7</attribute:Conventions>
+    <attribute:comment>Contains modified Copernicus Climate Change Service Information 2020</attribute:comment>
+  </prov:entity>
+  <prov:agent prov:id="author:No maintainer available">
+    <attribute:institute>Unseen University</attribute:institute>
+  </prov:agent>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="file:/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep3eo0h2qn_20260406_150907/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2024.nc"/>
+    <prov:usedEntity prov:ref="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2019-2019.nc"/>
+    <prov:activity prov:ref="task:diagnostic/tas"/>
+  </prov:wasDerivedFrom>
+  <prov:entity prov:id="file:/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep3eo0h2qn_20260406_150907/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2024.nc">
+    <attribute:alias>ERA5</attribute:alias>
+    <attribute:dataset>ERA5</attribute:dataset>
+    <attribute:diagnostic>diagnostic</attribute:diagnostic>
+    <attribute:end_year>2024</attribute:end_year>
+    <attribute:filename>/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep3eo0h2qn_20260406_150907/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2024.nc</attribute:filename>
+    <attribute:frequency>day</attribute:frequency>
+    <attribute:long_name>Near-Surface Air Temperature</attribute:long_name>
+    <attribute:mip>day</attribute:mip>
+    <attribute:modeling_realm>['atmos']</attribute:modeling_realm>
+    <attribute:original_short_name>tas</attribute:original_short_name>
+    <attribute:preprocessor>tas</attribute:preprocessor>
+    <attribute:project>OBS6</attribute:project>
+    <attribute:recipe_dataset_index>0</attribute:recipe_dataset_index>
+    <attribute:short_name>tas</attribute:short_name>
+    <attribute:standard_name>air_temperature</attribute:standard_name>
+    <attribute:start_year>2014</attribute:start_year>
+    <attribute:tier>3</attribute:tier>
+    <attribute:timerange>2014/2024</attribute:timerange>
+    <attribute:type>reanaly</attribute:type>
+    <attribute:units>K</attribute:units>
+    <attribute:variable_group>tas</attribute:variable_group>
+    <attribute:version>1</attribute:version>
+    <preprocessor:area_statistics>{'operator': 'mean'}</preprocessor:area_statistics>
+    <preprocessor:extract_shape>{'shapefile': PosixPath('/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/manning.shp'), 'crop': True, 'decomposed': False}</preprocessor:extract_shape>
+    <preprocessor:remove_supplementary_variables>{}</preprocessor:remove_supplementary_variables>
+    <preprocessor:save>{'compress': False, 'filename': PosixPath('/home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep3eo0h2qn_20260406_150907/preproc/diagnostic/tas/OBS6_ERA5_reanaly_1_day_tas_2014-2024.nc')}</preprocessor:save>
+  </prov:entity>
+  <prov:entity prov:id="file:/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2017-2017.nc">
+    <attribute:Conventions>CF-1.7</attribute:Conventions>
+    <attribute:comment>Contains modified Copernicus Climate Change Service Information 2020</attribute:comment>
+  </prov:entity>
+  <prov:wasAttributedTo>
+    <prov:entity prov:ref="recipe:ewcrep3eo0h2qn.yml"/>
+    <prov:agent prov:ref="author:No maintainer available"/>
+  </prov:wasAttributedTo>
+</prov:document>
