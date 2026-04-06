@@ -1,0 +1,68 @@
+documentation:
+  title: Generic lumped forcing recipe
+  description: Generic lumped forcing recipe
+  authors:
+  - unmaintained
+  projects:
+  - ewatercycle
+datasets:
+- dataset: EC-Earth3
+  project: CMIP6
+  ensemble: r1i1p1f1
+  exp: historical
+  grid: gr
+preprocessors:
+  spatial:
+    extract_shape:
+      shapefile: 
+        /home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/Forcing/manning.shp
+      crop: true
+      decomposed: false
+    area_statistics:
+      operator: mean
+  pr:
+    extract_shape:
+      shapefile: 
+        /home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/Forcing/manning.shp
+      crop: true
+      decomposed: false
+    area_statistics:
+      operator: mean
+  tas:
+    extract_shape:
+      shapefile: 
+        /home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/Forcing/manning.shp
+      crop: true
+      decomposed: false
+    area_statistics:
+      operator: mean
+  rsds:
+    extract_shape:
+      shapefile: 
+        /home/group10/teaching-materials/book/2_modelling_advanced_ewatercycle/Forcing/manning.shp
+      crop: true
+      decomposed: false
+    area_statistics:
+      operator: mean
+diagnostics:
+  diagnostic:
+    scripts:
+      script:
+        script: 
+          /opt/conda/envs/ewatercycle2/lib/python3.12/site-packages/ewatercycle/esmvaltool/diagnostic/copier.py
+    variables:
+      pr:
+        start_year: 2010
+        end_year: 2012
+        mip: day
+        preprocessor: pr
+      tas:
+        start_year: 2010
+        end_year: 2012
+        mip: day
+        preprocessor: tas
+      rsds:
+        start_year: 2010
+        end_year: 2012
+        mip: day
+        preprocessor: rsds
