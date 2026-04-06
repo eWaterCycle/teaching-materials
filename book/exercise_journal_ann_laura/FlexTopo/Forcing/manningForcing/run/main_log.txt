@@ -1,0 +1,4 @@
+ERROR   [193556] No such comm target registered: jupyter.widget.control
+ERROR   [193556] No such comm target registered: jupyter.widget.control
+WARNING [193556] No such comm: 7d2e699c-efdd-4abd-8b72-c8268561516c
+WARNING [193556] No such comm: 7d2e699c-efdd-4abd-8b72-c8268561516c

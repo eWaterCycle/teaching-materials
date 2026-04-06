@@ -18,3 +18,5 @@
 2026-04-06 13:09:23,536 UTC [113422] WARNING Comm:255 No such comm: e5657dc7-1810-4423-ab9f-36d8dd5f2744
 2026-04-06 13:11:55,938 UTC [113422] ERROR   ipykernel.comm:46 No such comm target registered: jupyter.widget.control
 2026-04-06 13:11:55,940 UTC [113422] WARNING Comm:255 No such comm: 720af2f5-621c-47ed-b1af-c1e176396557
+2026-04-06 13:17:05,762 UTC [113422] ERROR   ipykernel.comm:46 No such comm target registered: jupyter.widget.control
+2026-04-06 13:17:05,764 UTC [113422] WARNING Comm:255 No such comm: b0f00d14-ee4d-4efa-8fbb-6ccb3ca3a729

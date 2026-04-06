@@ -1,0 +1,4 @@
+2026-04-06 13:17:05,084 UTC [193556] ERROR   ipykernel.comm:46 No such comm target registered: jupyter.widget.control
+2026-04-06 13:17:05,084 UTC [193556] ERROR   ipykernel.comm:46 No such comm target registered: jupyter.widget.control
+2026-04-06 13:17:05,087 UTC [193556] WARNING Comm:255 No such comm: 7d2e699c-efdd-4abd-8b72-c8268561516c
+2026-04-06 13:17:05,087 UTC [193556] WARNING Comm:255 No such comm: 7d2e699c-efdd-4abd-8b72-c8268561516c
