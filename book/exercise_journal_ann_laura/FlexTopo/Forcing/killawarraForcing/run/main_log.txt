@@ -8,3 +8,5 @@ ERROR   [113422] No such comm target registered: jupyter.widget.control
 WARNING [113422] No such comm: c9236d0a-2938-4344-9e3d-792fbbe734ed
 ERROR   [113422] No such comm target registered: jupyter.widget.control
 WARNING [113422] No such comm: 1dd3dee0-ff0e-45b9-a44d-82b719e4037d
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: 4e5e95df-46aa-436f-b089-827d21ac7020
