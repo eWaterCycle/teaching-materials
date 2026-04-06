@@ -2,3 +2,7 @@ ERROR   [113422] Could not create all tasks
 ERROR   [113422] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/killawarra.shp'
 ERROR   [113422] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/killawarra.shp'
 ERROR   [113422] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/killawarra.shp'
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: fc878297-b9d2-4b93-9ee0-c7d923546609
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: c9236d0a-2938-4344-9e3d-792fbbe734ed
