@@ -6,7 +6,7 @@ input_files:
 log_level: info
 output_file_type: png
 plot_dir: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/manningForcing/plots/diagnostic/script
-recipe: ewcrepny1mczia.yml
+recipe: ewcrep4zosjo4a.yml
 run_dir: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/manningForcing/run/diagnostic/script
 script: script
 version: 2.11.1
