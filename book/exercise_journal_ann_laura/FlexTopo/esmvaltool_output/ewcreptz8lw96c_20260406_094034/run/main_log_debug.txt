@@ -1,0 +1,42 @@
+2026-04-06 11:40:34,623 UTC [26759] ERROR   esmvalcore._recipe.recipe:747 Could not create all tasks
+2026-04-06 11:40:34,624 UTC [26759] ERROR   esmvalcore._recipe.recipe:749 Missing data for preprocessor diagnostic/pr:
+- No input data available for years 2025 in files:
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_pr_2014-2014.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_pr_2015-2015.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_pr_2016-2016.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_pr_2017-2017.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_pr_2018-2018.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_pr_2019-2019.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_pr_2020-2020.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_pr_2021-2021.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_pr_2022-2022.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_pr_2023-2023.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_pr_2024-2024.nc
+2026-04-06 11:40:34,625 UTC [26759] ERROR   esmvalcore._recipe.recipe:749 Missing data for preprocessor diagnostic/tas:
+- No input data available for years 2025 in files:
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_20140101-20141231.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2015-2015.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2016-2016.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2017-2017.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2018-2018.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2019-2019.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2020-2020.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2021-2021.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2022-2022.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2023-2023.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_tas_2024-2024.nc
+2026-04-06 11:40:34,626 UTC [26759] ERROR   esmvalcore._recipe.recipe:749 Missing data for preprocessor diagnostic/rsds:
+- No input data available for years 2025 in files:
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_rsds_2014-2014.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_rsds_2015-2015.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_rsds_2016-2016.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_rsds_2017-2017.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_rsds_2018-2018.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_rsds_2019-2019.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_rsds_2020-2020.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_rsds_2021-2021.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_rsds_2022-2022.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_rsds_2023-2023.nc
+/data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_rsds_2024-2024.nc
+2026-04-06 11:40:43,014 UTC [26759] ERROR   ipykernel.comm:46 No such comm target registered: jupyter.widget.control
+2026-04-06 11:40:43,017 UTC [26759] WARNING Comm:255 No such comm: 80457d2c-46e5-4d75-bcf3-10960de75f4a
