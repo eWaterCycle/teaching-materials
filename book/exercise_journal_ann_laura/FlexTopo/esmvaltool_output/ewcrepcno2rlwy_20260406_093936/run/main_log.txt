@@ -80,3 +80,11 @@ ERROR   [26759] Missing data for preprocessor diagnostic/rsds:
 /data/shared/climate-data/obs6/Tier3/ERA5/OBS6_ERA5_reanaly_1_day_rsds_2024-2024.nc
 ERROR   [26759] No such comm target registered: jupyter.widget.control
 WARNING [26759] No such comm: 80457d2c-46e5-4d75-bcf3-10960de75f4a
+ERROR   [26759] No such comm target registered: jupyter.widget.control
+ERROR   [26759] No such comm target registered: jupyter.widget.control
+ERROR   [26759] No such comm target registered: jupyter.widget.control
+ERROR   [26759] No such comm target registered: jupyter.widget.control
+WARNING [26759] No such comm: 8f220528-0ec0-436c-9c40-8193d630eeae
+WARNING [26759] No such comm: 06aab924-1159-43e2-a29d-5b02efcd3f0a
+WARNING [26759] No such comm: 1d393fa8-bfd2-47b7-a0ff-581b8973b844
+WARNING [26759] No such comm: a8dee4b6-9bb0-474d-9b60-6c48bb85e675
