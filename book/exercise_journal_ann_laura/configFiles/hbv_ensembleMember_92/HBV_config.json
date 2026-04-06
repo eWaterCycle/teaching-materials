@@ -1,0 +1,6 @@
+{
+    "precipitation_file": "/home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/HBV_forcing_external_2026-04-06 16_03.nc",
+    "potential_evaporation_file": "/home/group10/teaching-materials/book/exercise_journal_ann_laura/Forcing/HBV_forcing_external_2026-04-06 16_03.nc",
+    "parameters": "1.6361860627610625,0.5409478856401173,268.97361769764296,2.2671211846752652,0.2774493486411209,1.1607395902062871,0.07314932701290974,0.008627831751340421",
+    "initial_storage": "2,390,80,39"
+}
