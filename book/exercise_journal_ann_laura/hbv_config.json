@@ -1,0 +1,1 @@
+{"precipitation_file": "Data\\manning_ERA5_precip_daily.nc", "potential_evaporation_file": "Data\\manning_ERA5_evap_daily.nc", "initial_storage": "0,100,0,5", "parameters": "4.14429129599415,0.7377709348475158,763.1394762305468,1.9532169877887877,0.19061262480140057,1.6782551355895552,0.038374930933569376,0.004098924609234433"}
