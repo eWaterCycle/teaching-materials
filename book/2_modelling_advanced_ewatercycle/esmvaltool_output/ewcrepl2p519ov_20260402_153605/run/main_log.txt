@@ -1,2 +1,0 @@
-ERROR   [355164] Task was destroyed but it is pending!
-task: <Task pending name='Task-3' coro=<Kernel.poll_control_queue() running at /opt/conda/envs/ewatercycle2/lib/python3.12/site-packages/ipykernel/kernelbase.py:304> wait_for=<Future finished result=<Future at 0x...state=pending>> cb=[_chain_future.<locals>._call_set_state() at /opt/conda/envs/ewatercycle2/lib/python3.12/asyncio/futures.py:398]>
