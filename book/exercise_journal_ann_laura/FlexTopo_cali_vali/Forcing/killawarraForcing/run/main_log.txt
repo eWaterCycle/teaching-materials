@@ -1,0 +1,36 @@
+ERROR   [113422] Could not create all tasks
+ERROR   [113422] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/killawarra.shp'
+ERROR   [113422] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/killawarra.shp'
+ERROR   [113422] In preprocessor function `extract_shape`: Unable to find 'shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/killawarra.shp'
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: fc878297-b9d2-4b93-9ee0-c7d923546609
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: c9236d0a-2938-4344-9e3d-792fbbe734ed
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: 1dd3dee0-ff0e-45b9-a44d-82b719e4037d
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: 4e5e95df-46aa-436f-b089-827d21ac7020
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: 58f4cd0c-1a73-4287-8413-8ca8f15ff1a3
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: 68968c0e-335d-47eb-9222-4d49bbc7a2f1
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: e5657dc7-1810-4423-ab9f-36d8dd5f2744
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: 720af2f5-621c-47ed-b1af-c1e176396557
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: b0f00d14-ee4d-4efa-8fbb-6ccb3ca3a729
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: 71899db5-ef33-46c1-b502-e7254497f087
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: 6884a2e8-d457-4330-b99e-5c15a3977538
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: 23af7c5f-a2ec-4663-b4b0-ef33f5fdec0e
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: 94c67d6a-8029-487d-a6a9-2da577c89a2e
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: 2eec8a1d-6453-4e2b-b580-5a9ea5ddd186
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: e7542991-b11b-4990-8e49-a70ffcf0189a
+ERROR   [113422] No such comm target registered: jupyter.widget.control
+WARNING [113422] No such comm: 15e52eb1-5203-4003-a6ff-74a04a34fd76

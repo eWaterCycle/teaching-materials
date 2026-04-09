@@ -1,0 +1,69 @@
+documentation:
+  title: Generic lumped forcing recipe
+  description: Generic lumped forcing recipe
+  authors:
+  - unmaintained
+  projects:
+  - ewatercycle
+preprocessors:
+  spatial:
+    extract_shape:
+      shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/manning.shp
+      crop: true
+      decomposed: false
+    area_statistics:
+      operator: mean
+  pr:
+    extract_shape:
+      shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/manning.shp
+      crop: true
+      decomposed: false
+    area_statistics:
+      operator: mean
+  tas:
+    extract_shape:
+      shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/manning.shp
+      crop: true
+      decomposed: false
+    area_statistics:
+      operator: mean
+  rsds:
+    extract_shape:
+      shapefile: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/Forcing/manning.shp
+      crop: true
+      decomposed: false
+    area_statistics:
+      operator: mean
+  default: {}
+diagnostics:
+  diagnostic:
+    scripts:
+      script:
+        script: /opt/conda/envs/ewatercycle2/lib/python3.12/site-packages/ewatercycle/esmvaltool/diagnostic/copier.py
+    variables:
+      pr:
+        mip: day
+        preprocessor: pr
+        project: OBS6
+        tier: 3
+        type: reanaly
+        version: 1
+        timerange: 2010/2012
+      tas:
+        mip: day
+        preprocessor: tas
+        project: OBS6
+        tier: 3
+        type: reanaly
+        version: 1
+        timerange: 2010/2012
+      rsds:
+        mip: day
+        preprocessor: rsds
+        project: OBS6
+        tier: 3
+        type: reanaly
+        version: 1
+        timerange: 2010/2012
+datasets:
+- dataset: ERA5

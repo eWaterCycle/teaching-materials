@@ -1,0 +1,23 @@
+? /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep2dhjfncd_20260407_131623/preproc/diagnostic/rsds/OBS6_ERA5_reanaly_1_day_rsds_2014-2024.nc
+: alias: ERA5
+  dataset: ERA5
+  diagnostic: diagnostic
+  end_year: 2024
+  filename: /home/group10/teaching-materials/book/exercise_journal_ann_laura/FlexTopo/esmvaltool_output/ewcrep2dhjfncd_20260407_131623/preproc/diagnostic/rsds/OBS6_ERA5_reanaly_1_day_rsds_2014-2024.nc
+  frequency: day
+  long_name: Surface Downwelling Shortwave Radiation
+  mip: day
+  modeling_realm:
+  - atmos
+  preprocessor: rsds
+  project: OBS6
+  recipe_dataset_index: 0
+  short_name: rsds
+  standard_name: surface_downwelling_shortwave_flux_in_air
+  start_year: 2014
+  tier: 3
+  timerange: 2014/2024
+  type: reanaly
+  units: W m-2
+  variable_group: rsds
+  version: 1
